@@ -2,11 +2,11 @@
 
 [English](README.md) | **Türkçe**
 
-![Living Themes tema görünümü](assets/living-themes-overview.png)
+[![Living Themes tema görünümü](assets/living-themes-overview.tr.png)](docs/gallery/README.tr.md)
 
-[**48 temanın hareketli Türkçe galerisi →**](docs/Living-Themes-48-Galeri.tr.html)
+[**48 temanın Türkçe görsel galerisi →**](docs/gallery/README.tr.md)
 
-Hareketli galeriyi kullanmak için HTML dosyasını indirip tarayıcında aç.
+Tam boyutlu önizleme için görsel galerisini aç. [English gallery](docs/gallery/README.md).
 
 
 **`claude` yaz → `/theme` → tema seç.** Kurulum zsh’de normal `claude` komutuna canlı başlatıcıyı otomatik bağlar. Ardından Claude’un **`/theme` → `Living · …`** menüsünden 48 sahneden birini seç: arka plan terminal alanının tamamına yayılır. Konuşmalar, komut girişi, menüler ve diff renkleri ön planda kalır. VS Code, tarayıcı veya ayrı masaüstü uygulaması gerekmez.

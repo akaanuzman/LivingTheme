@@ -24,6 +24,7 @@ for(const name of ['plugin.json','icon.png'])await cp(resolve(root,'.claude-plug
 for(const name of ['README.md','README.tr.md','LICENSE'])await cp(resolve(root,name),resolve(root,'plugin',name));
 await mkdir(resolve(root,'plugin/docs'),{recursive:true});
 for(const name of ['Living-Themes-48-Galeri.html','Living-Themes-48-Galeri.tr.html','VALIDATION.md'])await cp(resolve(root,'docs',name),resolve(root,'plugin/docs',name));
+await cp(resolve(root,'docs/gallery'),resolve(root,'plugin/docs/gallery'),{recursive:true});
 await cp(resolve(root,'assets'),resolve(root,'plugin/assets'),{recursive:true});
 await cp(resolve(root,'scripts/state.sh'),resolve(root,'plugin/scripts/state.sh'));
 console.log(`Built JavaScript and ${THEMES.length} Claude Code themes.`);

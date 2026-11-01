@@ -2,11 +2,11 @@
 
 **English** | [Türkçe](README.tr.md)
 
-![Living Themes overview](assets/living-themes-overview.png)
+[![Living Themes overview](assets/living-themes-overview.png)](docs/gallery/README.md)
 
-[**Explore all 48 animated themes →**](docs/Living-Themes-48-Galeri.html)
+[**View all 48 themes →**](docs/gallery/README.md)
 
-Open the downloaded HTML file in your browser to use the animated gallery.
+Open the image gallery for the full-size preview. [Türkçe galeri](docs/gallery/README.tr.md).
 
 
 **Run `claude` → type `/theme` → pick a theme.** Living Themes adds 48 animated ASCII worlds across your entire terminal, with Claude's conversation, input, menus, and diff colors in the foreground. No VS Code, browser, or separate desktop app is required.
