@@ -2,12 +2,9 @@
 
 **English** | [Türkçe](README.tr.md)
 
-[![Living Themes overview](assets/living-themes-overview.en.png)](docs/gallery/README.md)
-
 [**View all 48 themes →**](docs/gallery/README.md)
 
 Open the image gallery for the full-size preview. [Turkish gallery](docs/gallery/README.tr.md).
-
 
 **Run `claude` → type `/theme` → pick a theme.** Living Themes adds 48 animated ASCII worlds across your entire terminal, with Claude's conversation, input, menus, and diff colors in the foreground. No VS Code, browser, or separate desktop app is required.
 
@@ -45,52 +42,52 @@ You can also launch explicitly, including from shells without automatic integrat
 
 `--living-theme` sets the initial scene; your next `/theme` selection takes over. Other Claude arguments are forwarded unchanged.
 
-| Launcher option | Purpose |
-| --- | --- |
-| `--living-claude /path/to/claude` | Choose the Claude executable |
-| `--living-fps 15` | Set the frame rate; default 10, range 1–30 |
-| `--living-list` | List the available themes |
-| `--living-doctor` | Show installation diagnostics |
-| `--living-help` | Show launcher help |
+| Launcher option                   | Purpose                                    |
+| --------------------------------- | ------------------------------------------ |
+| `--living-claude /path/to/claude` | Choose the Claude executable               |
+| `--living-fps 15`                 | Set the frame rate; default 10, range 1–30 |
+| `--living-list`                   | List the available themes                  |
+| `--living-doctor`                 | Show installation diagnostics              |
+| `--living-help`                   | Show launcher help                         |
 
 For a still scene, launch with `LIVING_THEMES_REDUCE_MOTION=1 ~/.local/bin/living`.
 
 ## Controls inside Claude
 
-| Command | Action |
-| --- | --- |
-| `/theme` | Choose a theme using Claude's native picker |
-| `/living` | Open motion, visibility, brightness, and intensity controls |
-| `/living pause` / `/living resume` | Freeze the current frame or resume animation |
-| `/living hide` / `/living show` | Hide or show the scene |
-| `/living brightness 65` | Set brightness as a percentage |
-| `/living intensity 40` | Set motion intensity as a percentage |
-| `/living status` | Inspect local and shared preferences |
-| `/exit` | Close Claude and return to your shell |
+| Command                            | Action                                                      |
+| ---------------------------------- | ----------------------------------------------------------- |
+| `/theme`                           | Choose a theme using Claude's native picker                 |
+| `/living`                          | Open motion, visibility, brightness, and intensity controls |
+| `/living pause` / `/living resume` | Freeze the current frame or resume animation                |
+| `/living hide` / `/living show`    | Hide or show the scene                                      |
+| `/living brightness 65`            | Set brightness as a percentage                              |
+| `/living intensity 40`             | Set motion intensity as a percentage                        |
+| `/living status`                   | Inspect local and shared preferences                        |
+| `/exit`                            | Close Claude and return to your shell                       |
 
 Sessions using the same `CLAUDE_CONFIG_DIR` share their scene selection and controls. Selecting a built-in theme or another plugin's theme hides the animated figures. Other open Claude sessions may still need the same custom theme selected through `/theme` to match their accent colors.
 
 ## 48 worlds
 
-| Video inspirations | Quiet nature | Space | Cities and fantasy |
-| --- | --- | --- | --- |
-| Claude Ember | Fireflies | Aurora | Neon Tokyo |
-| Cloud Drift | Moonlit | Saturn Rings | Matrix Rain |
-| Honu Lagoon | Sakura Rain | Meteor Shower | Synthwave Road |
-| Koi Pond | Bamboo Mist | Nebula | Clockwork Garden |
-| Jellyfish | Autumn Creek | Lunar Horizon | Crystal Cave |
-| Paper Boats | Snow Cabin | Solar Flare | Lava Forge |
+| Video inspirations | Quiet nature | Space         | Cities and fantasy |
+| ------------------ | ------------ | ------------- | ------------------ |
+| Claude Ember       | Fireflies    | Aurora        | Neon Tokyo         |
+| Cloud Drift        | Moonlit      | Saturn Rings  | Matrix Rain        |
+| Honu Lagoon        | Sakura Rain  | Meteor Shower | Synthwave Road     |
+| Koi Pond           | Bamboo Mist  | Nebula        | Clockwork Garden   |
+| Jellyfish          | Autumn Creek | Lunar Horizon | Crystal Cave       |
+| Paper Boats        | Snow Cabin   | Solar Flare   | Lava Forge         |
 
 ### 24 more worlds introduced in 0.4
 
-| Ocean depths | Sky tales | Hidden worlds | Cosmic playground |
-| --- | --- | --- | --- |
-| Whale Song | Dragon Flight | Mushroom Grove | Black Hole |
-| Manta Ballet | Phoenix Rise | Enchanted Library | Orbital Station |
-| Seahorse Reef | Butterfly Meadow | Teahouse Rain | Rocket Launch |
-| Octopus Den | Floating Islands | Desert Caravan | Alien Orchard |
-| Coral Garden | Sky Lanterns | Bonsai Zen | Retro Arcade |
-| Submarine Voyage | Thunderstorm | Midnight Express | Hologram City |
+| Ocean depths     | Sky tales        | Hidden worlds     | Cosmic playground |
+| ---------------- | ---------------- | ----------------- | ----------------- |
+| Whale Song       | Dragon Flight    | Mushroom Grove    | Black Hole        |
+| Manta Ballet     | Phoenix Rise     | Enchanted Library | Orbital Station   |
+| Seahorse Reef    | Butterfly Meadow | Teahouse Rain     | Rocket Launch     |
+| Octopus Den      | Floating Islands | Desert Caravan    | Alien Orchard     |
+| Coral Garden     | Sky Lanterns     | Bonsai Zen        | Retro Arcade      |
+| Submarine Voyage | Thunderstorm     | Midnight Express  | Hologram City     |
 
 Each scene has its own composition and motion. Large figures, particles, and environmental textures adapt to the terminal dimensions while respecting character-cell proportions. Quiet backing behind text keeps scene characters out of the spaces between words.
 

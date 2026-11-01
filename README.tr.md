@@ -2,12 +2,9 @@
 
 [English](README.md) | **Türkçe**
 
-[![Living Themes tema görünümü](assets/living-themes-overview.tr.png)](docs/gallery/README.tr.md)
-
 [**48 temanın Türkçe görsel galerisi →**](docs/gallery/README.tr.md)
 
 Tam boyutlu önizleme için görsel galerisini aç. [İngilizce galeri](docs/gallery/README.md).
-
 
 **`claude` yaz → `/theme` → tema seç.** Kurulum zsh’de normal `claude` komutuna canlı başlatıcıyı otomatik bağlar. Ardından Claude’un **`/theme` → `Living · …`** menüsünden 48 sahneden birini seç: arka plan terminal alanının tamamına yayılır. Konuşmalar, komut girişi, menüler ve diff renkleri ön planda kalır. VS Code, tarayıcı veya ayrı masaüstü uygulaması gerekmez.
 
@@ -49,28 +46,27 @@ Aynı `CLAUDE_CONFIG_DIR` kullanan canlı Claude oturumları seçim ve kontrolle
 
 ## 48 dünya
 
-| Video esintileri | Sakin doğa | Uzay | Şehir ve fantastik |
-| --- | --- | --- | --- |
-| Claude Ember | Fireflies | Aurora | Neon Tokyo |
-| Cloud Drift | Moonlit | Saturn Rings | Matrix Rain |
-| Honu Lagoon | Sakura Rain | Meteor Shower | Synthwave Road |
-| Koi Pond | Bamboo Mist | Nebula | Clockwork Garden |
-| Jellyfish | Autumn Creek | Lunar Horizon | Crystal Cave |
-| Paper Boats | Snow Cabin | Solar Flare | Lava Forge |
+| Video esintileri | Sakin doğa   | Uzay          | Şehir ve fantastik |
+| ---------------- | ------------ | ------------- | ------------------ |
+| Claude Ember     | Fireflies    | Aurora        | Neon Tokyo         |
+| Cloud Drift      | Moonlit      | Saturn Rings  | Matrix Rain        |
+| Honu Lagoon      | Sakura Rain  | Meteor Shower | Synthwave Road     |
+| Koi Pond         | Bamboo Mist  | Nebula        | Clockwork Garden   |
+| Jellyfish        | Autumn Creek | Lunar Horizon | Crystal Cave       |
+| Paper Boats      | Snow Cabin   | Solar Flare   | Lava Forge         |
 
 Büyük figürler, parçacıklar ve ortam dokuları terminalin bütün boyutlarına göre çizilir. Hücrelerin fiziksel en/boy oranı hesaba katılır; panel uzarken figürler şerit gibi gerilmez. Metin satırlarındaki kelimelerin arasına sahne karakteri girmez; yazıların altındaki sakin zemin okunabilirliği korur.
 
-
 ### 0.4 ile gelen 24 yeni dünya
 
-| Okyanusun derinlikleri | Gökyüzü masalları | Saklı dünyalar | Kozmik oyun alanı |
-| --- | --- | --- | --- |
-| Whale Song | Dragon Flight | Mushroom Grove | Black Hole |
-| Manta Ballet | Phoenix Rise | Enchanted Library | Orbital Station |
-| Seahorse Reef | Butterfly Meadow | Teahouse Rain | Rocket Launch |
-| Octopus Den | Floating Islands | Desert Caravan | Alien Orchard |
-| Coral Garden | Sky Lanterns | Bonsai Zen | Retro Arcade |
-| Submarine Voyage | Thunderstorm | Midnight Express | Hologram City |
+| Okyanusun derinlikleri | Gökyüzü masalları | Saklı dünyalar    | Kozmik oyun alanı |
+| ---------------------- | ----------------- | ----------------- | ----------------- |
+| Whale Song             | Dragon Flight     | Mushroom Grove    | Black Hole        |
+| Manta Ballet           | Phoenix Rise      | Enchanted Library | Orbital Station   |
+| Seahorse Reef          | Butterfly Meadow  | Teahouse Rain     | Rocket Launch     |
+| Octopus Den            | Floating Islands  | Desert Caravan    | Alien Orchard     |
+| Coral Garden           | Sky Lanterns      | Bonsai Zen        | Retro Arcade      |
+| Submarine Voyage       | Thunderstorm      | Midnight Express  | Hologram City     |
 
 Güncellemeden sonra yeni bir terminalde `claude` ile bir oturum aç. Açık oturumun başlatıcısı eski sahne motorunu bellekte tutar; yalnızca `/reload-plugins` yeni tam ekran çizim kodunu yüklemez. Konuşmana `/resume` ile dönebilirsin. Ardından `/theme` menüsünden yeni sahneleri seç.
 
