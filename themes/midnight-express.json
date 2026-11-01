@@ -1,0 +1,30 @@
+{
+  "name": "Living · Midnight Express",
+  "base": "dark",
+  "overrides": {
+    "claude": "#d2b890",
+    "claudeShimmer": "#ffe9b4",
+    "text": "#e9eef7",
+    "inverseText": "#1c2432",
+    "inactive": "#91b4d9",
+    "inactiveShimmer": "#e9eef7",
+    "subtle": "#42556e",
+    "suggestion": "#91b4d9",
+    "permission": "#ffe9b4",
+    "permissionShimmer": "#e9eef7",
+    "promptBorder": "#d2b890",
+    "promptBorderShimmer": "#ffe9b4",
+    "planMode": "#91b4d9",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#1c2432",
+    "composerSidebarBackground": "#1c2432",
+    "selectionBg": "#42556e"
+  }
+}

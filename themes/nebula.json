@@ -1,0 +1,30 @@
+{
+  "name": "Living · Nebula",
+  "base": "dark",
+  "overrides": {
+    "claude": "#d5a3e8",
+    "claudeShimmer": "#ffe0f6",
+    "text": "#efdef8",
+    "inverseText": "#251c33",
+    "inactive": "#87bddc",
+    "inactiveShimmer": "#efdef8",
+    "subtle": "#634573",
+    "suggestion": "#87bddc",
+    "permission": "#ffe0f6",
+    "permissionShimmer": "#efdef8",
+    "promptBorder": "#d5a3e8",
+    "promptBorderShimmer": "#ffe0f6",
+    "planMode": "#87bddc",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#251c33",
+    "composerSidebarBackground": "#251c33",
+    "selectionBg": "#634573"
+  }
+}

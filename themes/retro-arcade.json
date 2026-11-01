@@ -1,0 +1,30 @@
+{
+  "name": "Living · Retro Arcade",
+  "base": "dark",
+  "overrides": {
+    "claude": "#bda0f0",
+    "claudeShimmer": "#ffe7a3",
+    "text": "#f4e9ff",
+    "inverseText": "#201c35",
+    "inactive": "#88d7d1",
+    "inactiveShimmer": "#f4e9ff",
+    "subtle": "#4c426c",
+    "suggestion": "#88d7d1",
+    "permission": "#ffe7a3",
+    "permissionShimmer": "#f4e9ff",
+    "promptBorder": "#bda0f0",
+    "promptBorderShimmer": "#ffe7a3",
+    "planMode": "#88d7d1",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#201c35",
+    "composerSidebarBackground": "#201c35",
+    "selectionBg": "#4c426c"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Living · Cloud Drift",
+  "base": "dark",
+  "overrides": {
+    "claude": "#97cefa",
+    "claudeShimmer": "#fff0c4",
+    "text": "#e2f1ff",
+    "inverseText": "#122536",
+    "inactive": "#c5e4f7",
+    "inactiveShimmer": "#e2f1ff",
+    "subtle": "#365975",
+    "suggestion": "#c5e4f7",
+    "permission": "#fff0c4",
+    "permissionShimmer": "#e2f1ff",
+    "promptBorder": "#97cefa",
+    "promptBorderShimmer": "#fff0c4",
+    "planMode": "#c5e4f7",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#122536",
+    "composerSidebarBackground": "#122536",
+    "selectionBg": "#365975"
+  }
+}

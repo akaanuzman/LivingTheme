@@ -1,0 +1,30 @@
+{
+  "name": "Living · Claude Ember",
+  "base": "dark",
+  "overrides": {
+    "claude": "#f5a17a",
+    "claudeShimmer": "#ffd4a3",
+    "text": "#efdfd1",
+    "inverseText": "#201713",
+    "inactive": "#c8ab78",
+    "inactiveShimmer": "#efdfd1",
+    "subtle": "#654432",
+    "suggestion": "#c8ab78",
+    "permission": "#ffd4a3",
+    "permissionShimmer": "#efdfd1",
+    "promptBorder": "#f5a17a",
+    "promptBorderShimmer": "#ffd4a3",
+    "planMode": "#c8ab78",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#201713",
+    "composerSidebarBackground": "#201713",
+    "selectionBg": "#654432"
+  }
+}

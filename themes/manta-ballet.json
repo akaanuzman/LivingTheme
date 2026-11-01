@@ -1,0 +1,30 @@
+{
+  "name": "Living · Manta Ballet",
+  "base": "dark",
+  "overrides": {
+    "claude": "#9ed7e5",
+    "claudeShimmer": "#daf9fa",
+    "text": "#dcecf5",
+    "inverseText": "#081f2d",
+    "inactive": "#64a7de",
+    "inactiveShimmer": "#dcecf5",
+    "subtle": "#294e69",
+    "suggestion": "#64a7de",
+    "permission": "#daf9fa",
+    "permissionShimmer": "#dcecf5",
+    "promptBorder": "#9ed7e5",
+    "promptBorderShimmer": "#daf9fa",
+    "planMode": "#64a7de",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#081f2d",
+    "composerSidebarBackground": "#081f2d",
+    "selectionBg": "#294e69"
+  }
+}

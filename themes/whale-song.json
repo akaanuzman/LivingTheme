@@ -1,0 +1,30 @@
+{
+  "name": "Living · Whale Song",
+  "base": "dark",
+  "overrides": {
+    "claude": "#7cb8db",
+    "claudeShimmer": "#e0fbff",
+    "text": "#def0f9",
+    "inverseText": "#071c2b",
+    "inactive": "#64d8cb",
+    "inactiveShimmer": "#def0f9",
+    "subtle": "#234b61",
+    "suggestion": "#64d8cb",
+    "permission": "#e0fbff",
+    "permissionShimmer": "#def0f9",
+    "promptBorder": "#7cb8db",
+    "promptBorderShimmer": "#e0fbff",
+    "planMode": "#64d8cb",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#071c2b",
+    "composerSidebarBackground": "#071c2b",
+    "selectionBg": "#234b61"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "living-themes",
+  "displayName": "Living Themes",
+  "version": "0.4.1",
+  "description": "48 full-screen living ASCII themes around the real Claude Code in your existing terminal, selected with /theme.",
+  "author": {
+    "name": "Kaan Uzman"
+  },
+  "license": "MIT",
+  "experimental": {
+    "themes": "./themes/"
+  }
+}

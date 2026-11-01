@@ -1,0 +1,30 @@
+{
+  "name": "Living · Clockwork Garden",
+  "base": "dark",
+  "overrides": {
+    "claude": "#d2bd7d",
+    "claudeShimmer": "#fff1af",
+    "text": "#ecebd5",
+    "inverseText": "#24291e",
+    "inactive": "#9ecb9a",
+    "inactiveShimmer": "#ecebd5",
+    "subtle": "#576044",
+    "suggestion": "#9ecb9a",
+    "permission": "#fff1af",
+    "permissionShimmer": "#ecebd5",
+    "promptBorder": "#d2bd7d",
+    "promptBorderShimmer": "#fff1af",
+    "planMode": "#9ecb9a",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#24291e",
+    "composerSidebarBackground": "#24291e",
+    "selectionBg": "#576044"
+  }
+}

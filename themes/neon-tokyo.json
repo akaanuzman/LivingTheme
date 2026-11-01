@@ -1,0 +1,30 @@
+{
+  "name": "Living · Neon Tokyo",
+  "base": "dark",
+  "overrides": {
+    "claude": "#eb9dcc",
+    "claudeShimmer": "#ffe5a0",
+    "text": "#eae3f6",
+    "inverseText": "#201e31",
+    "inactive": "#86cfe0",
+    "inactiveShimmer": "#eae3f6",
+    "subtle": "#53496b",
+    "suggestion": "#86cfe0",
+    "permission": "#ffe5a0",
+    "permissionShimmer": "#eae3f6",
+    "promptBorder": "#eb9dcc",
+    "promptBorderShimmer": "#ffe5a0",
+    "planMode": "#86cfe0",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#201e31",
+    "composerSidebarBackground": "#201e31",
+    "selectionBg": "#53496b"
+  }
+}

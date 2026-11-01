@@ -1,0 +1,30 @@
+{
+  "name": "Living · Meteor Shower",
+  "base": "dark",
+  "overrides": {
+    "claude": "#94c5f8",
+    "claudeShimmer": "#fff3cb",
+    "text": "#e0e9fa",
+    "inverseText": "#141d30",
+    "inactive": "#c5b1e5",
+    "inactiveShimmer": "#e0e9fa",
+    "subtle": "#33496c",
+    "suggestion": "#c5b1e5",
+    "permission": "#fff3cb",
+    "permissionShimmer": "#e0e9fa",
+    "promptBorder": "#94c5f8",
+    "promptBorderShimmer": "#fff3cb",
+    "planMode": "#c5b1e5",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#141d30",
+    "composerSidebarBackground": "#141d30",
+    "selectionBg": "#33496c"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Living · Bonsai Zen",
+  "base": "dark",
+  "overrides": {
+    "claude": "#a9c38d",
+    "claudeShimmer": "#edf5c6",
+    "text": "#e6efde",
+    "inverseText": "#202b25",
+    "inactive": "#d4bd8b",
+    "inactiveShimmer": "#e6efde",
+    "subtle": "#53684f",
+    "suggestion": "#d4bd8b",
+    "permission": "#edf5c6",
+    "permissionShimmer": "#e6efde",
+    "promptBorder": "#a9c38d",
+    "promptBorderShimmer": "#edf5c6",
+    "planMode": "#d4bd8b",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#202b25",
+    "composerSidebarBackground": "#202b25",
+    "selectionBg": "#53684f"
+  }
+}

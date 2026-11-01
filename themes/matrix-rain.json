@@ -1,0 +1,30 @@
+{
+  "name": "Living · Matrix Rain",
+  "base": "dark",
+  "overrides": {
+    "claude": "#89d99d",
+    "claudeShimmer": "#e4ffbd",
+    "text": "#d7f5df",
+    "inverseText": "#102219",
+    "inactive": "#b9e67e",
+    "inactiveShimmer": "#d7f5df",
+    "subtle": "#2c6541",
+    "suggestion": "#b9e67e",
+    "permission": "#e4ffbd",
+    "permissionShimmer": "#d7f5df",
+    "promptBorder": "#89d99d",
+    "promptBorderShimmer": "#e4ffbd",
+    "planMode": "#b9e67e",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#102219",
+    "composerSidebarBackground": "#102219",
+    "selectionBg": "#2c6541"
+  }
+}

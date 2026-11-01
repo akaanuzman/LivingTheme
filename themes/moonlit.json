@@ -1,0 +1,30 @@
+{
+  "name": "Living · Moonlit",
+  "base": "dark",
+  "overrides": {
+    "claude": "#bcb9f2",
+    "claudeShimmer": "#fff0c9",
+    "text": "#e8e7f6",
+    "inverseText": "#191d36",
+    "inactive": "#7e9dc4",
+    "inactiveShimmer": "#e8e7f6",
+    "subtle": "#3a4165",
+    "suggestion": "#7e9dc4",
+    "permission": "#fff0c9",
+    "permissionShimmer": "#e8e7f6",
+    "promptBorder": "#bcb9f2",
+    "promptBorderShimmer": "#fff0c9",
+    "planMode": "#7e9dc4",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#191d36",
+    "composerSidebarBackground": "#191d36",
+    "selectionBg": "#3a4165"
+  }
+}

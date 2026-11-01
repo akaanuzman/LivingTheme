@@ -1,0 +1,30 @@
+{
+  "name": "Living · Submarine Voyage",
+  "base": "dark",
+  "overrides": {
+    "claude": "#e4c77c",
+    "claudeShimmer": "#fff3b2",
+    "text": "#ecf1df",
+    "inverseText": "#102635",
+    "inactive": "#84c4d1",
+    "inactiveShimmer": "#ecf1df",
+    "subtle": "#3a596a",
+    "suggestion": "#84c4d1",
+    "permission": "#fff3b2",
+    "permissionShimmer": "#ecf1df",
+    "promptBorder": "#e4c77c",
+    "promptBorderShimmer": "#fff3b2",
+    "planMode": "#84c4d1",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#102635",
+    "composerSidebarBackground": "#102635",
+    "selectionBg": "#3a596a"
+  }
+}

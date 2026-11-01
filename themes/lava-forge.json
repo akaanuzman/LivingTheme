@@ -1,0 +1,30 @@
+{
+  "name": "Living · Lava Forge",
+  "base": "dark",
+  "overrides": {
+    "claude": "#eda073",
+    "claudeShimmer": "#ffe1a2",
+    "text": "#f1e2d8",
+    "inverseText": "#2d201d",
+    "inactive": "#d9bd79",
+    "inactiveShimmer": "#f1e2d8",
+    "subtle": "#715043",
+    "suggestion": "#d9bd79",
+    "permission": "#ffe1a2",
+    "permissionShimmer": "#f1e2d8",
+    "promptBorder": "#eda073",
+    "promptBorderShimmer": "#ffe1a2",
+    "planMode": "#d9bd79",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#2d201d",
+    "composerSidebarBackground": "#2d201d",
+    "selectionBg": "#715043"
+  }
+}

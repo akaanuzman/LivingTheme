@@ -1,0 +1,30 @@
+{
+  "name": "Living · Autumn Creek",
+  "base": "dark",
+  "overrides": {
+    "claude": "#e4a15e",
+    "claudeShimmer": "#ffe0a0",
+    "text": "#f3e7cf",
+    "inverseText": "#2b231b",
+    "inactive": "#b8bb7b",
+    "inactiveShimmer": "#f3e7cf",
+    "subtle": "#68523b",
+    "suggestion": "#b8bb7b",
+    "permission": "#ffe0a0",
+    "permissionShimmer": "#f3e7cf",
+    "promptBorder": "#e4a15e",
+    "promptBorderShimmer": "#ffe0a0",
+    "planMode": "#b8bb7b",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#2b231b",
+    "composerSidebarBackground": "#2b231b",
+    "selectionBg": "#68523b"
+  }
+}

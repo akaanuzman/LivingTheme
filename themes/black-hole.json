@@ -1,0 +1,30 @@
+{
+  "name": "Living · Black Hole",
+  "base": "dark",
+  "overrides": {
+    "claude": "#e4ad80",
+    "claudeShimmer": "#fff0ce",
+    "text": "#e9e8fa",
+    "inverseText": "#151a2c",
+    "inactive": "#b39de3",
+    "inactiveShimmer": "#e9e8fa",
+    "subtle": "#3f4569",
+    "suggestion": "#b39de3",
+    "permission": "#fff0ce",
+    "permissionShimmer": "#e9e8fa",
+    "promptBorder": "#e4ad80",
+    "promptBorderShimmer": "#fff0ce",
+    "planMode": "#b39de3",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#151a2c",
+    "composerSidebarBackground": "#151a2c",
+    "selectionBg": "#3f4569"
+  }
+}

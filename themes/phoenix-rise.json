@@ -1,0 +1,30 @@
+{
+  "name": "Living · Phoenix Rise",
+  "base": "dark",
+  "overrides": {
+    "claude": "#eea176",
+    "claudeShimmer": "#fff1ab",
+    "text": "#f9e6dc",
+    "inverseText": "#291b25",
+    "inactive": "#d28ea8",
+    "inactiveShimmer": "#f9e6dc",
+    "subtle": "#6b3d43",
+    "suggestion": "#d28ea8",
+    "permission": "#fff1ab",
+    "permissionShimmer": "#f9e6dc",
+    "promptBorder": "#eea176",
+    "promptBorderShimmer": "#fff1ab",
+    "planMode": "#d28ea8",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#291b25",
+    "composerSidebarBackground": "#291b25",
+    "selectionBg": "#6b3d43"
+  }
+}

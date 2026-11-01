@@ -1,0 +1,108 @@
+{
+  "name": "living-terminal",
+  "displayName": "Living Themes — Canlı Terminal",
+  "description": "Real Claude Code over full-canvas living ASCII worlds in VS Code.",
+  "publisher": "living-themes-local",
+  "version": "0.2.0",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.cjs",
+  "activationEvents": [
+    "onView:livingThemes.terminal",
+    "onCommand:livingThemes.open"
+  ],
+  "extensionKind": [
+    "ui"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": false
+    },
+    "virtualWorkspaces": false
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "livingThemes.open",
+        "title": "Living Themes: Canlı Terminal’i Aç",
+        "icon": "$(terminal)"
+      },
+      {
+        "command": "livingThemes.new",
+        "title": "Living Themes: Yeni Claude Oturumu",
+        "icon": "$(add)"
+      },
+      {
+        "command": "livingThemes.resume",
+        "title": "Living Themes: Claude Konuşmasına Devam Et",
+        "icon": "$(history)"
+      }
+    ],
+    "viewsContainers": {
+      "panel": [
+        {
+          "id": "livingThemes.panel",
+          "title": "Living Terminal",
+          "icon": "media/living.svg"
+        }
+      ]
+    },
+    "views": {
+      "livingThemes.panel": [
+        {
+          "type": "webview",
+          "id": "livingThemes.terminal",
+          "name": "Canlı Terminal",
+          "contextualTitle": "Living Themes"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Living Themes",
+      "properties": {
+        "livingThemes.claudePath": {
+          "type": "string",
+          "default": "",
+          "description": "Claude Code executable path. Empty uses the installed Claude Code."
+        },
+        "livingThemes.fontSize": {
+          "type": "number",
+          "default": 14,
+          "minimum": 10,
+          "maximum": 28,
+          "description": "Canlı Terminal font size."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "tsc --noEmit",
+    "test": "node --test tests/*.test.cjs",
+    "package": "npm run build && python3 scripts/package-vsix.py"
+  },
+  "dependencies": {
+    "@xterm/xterm": "5.5.0",
+    "@xterm/addon-fit": "0.10.0",
+    "@xterm/addon-serialize": "0.13.0",
+    "@xterm/headless": "5.5.0",
+    "@xterm/addon-webgl": "0.18.0",
+    "node-pty": "1.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/vscode": "^1.100.0",
+    "typescript": "^5.9.0",
+    "esbuild": "^0.25.0"
+  },
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "allowScripts": {
+    "node-pty@1.1.0": true,
+    "esbuild@0.25.12": true
+  }
+}

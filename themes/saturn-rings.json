@@ -1,0 +1,30 @@
+{
+  "name": "Living · Saturn Rings",
+  "base": "dark",
+  "overrides": {
+    "claude": "#d9bd85",
+    "claudeShimmer": "#ffebc4",
+    "text": "#eee8f5",
+    "inverseText": "#242131",
+    "inactive": "#b9a1d6",
+    "inactiveShimmer": "#eee8f5",
+    "subtle": "#5a4d6e",
+    "suggestion": "#b9a1d6",
+    "permission": "#ffebc4",
+    "permissionShimmer": "#eee8f5",
+    "promptBorder": "#d9bd85",
+    "promptBorderShimmer": "#ffebc4",
+    "planMode": "#b9a1d6",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#242131",
+    "composerSidebarBackground": "#242131",
+    "selectionBg": "#5a4d6e"
+  }
+}

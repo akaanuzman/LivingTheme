@@ -1,0 +1,30 @@
+{
+  "name": "Living · Teahouse Rain",
+  "base": "dark",
+  "overrides": {
+    "claude": "#c9bc91",
+    "claudeShimmer": "#ffe9bb",
+    "text": "#f1ecdc",
+    "inverseText": "#232b29",
+    "inactive": "#9ec4bd",
+    "inactiveShimmer": "#f1ecdc",
+    "subtle": "#52635a",
+    "suggestion": "#9ec4bd",
+    "permission": "#ffe9bb",
+    "permissionShimmer": "#f1ecdc",
+    "promptBorder": "#c9bc91",
+    "promptBorderShimmer": "#ffe9bb",
+    "planMode": "#9ec4bd",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#232b29",
+    "composerSidebarBackground": "#232b29",
+    "selectionBg": "#52635a"
+  }
+}

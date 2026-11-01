@@ -1,0 +1,30 @@
+{
+  "name": "Living · Octopus Den",
+  "base": "dark",
+  "overrides": {
+    "claude": "#d7a1ea",
+    "claudeShimmer": "#ffe1fa",
+    "text": "#f0e5fc",
+    "inverseText": "#211932",
+    "inactive": "#84bfdc",
+    "inactiveShimmer": "#f0e5fc",
+    "subtle": "#51436e",
+    "suggestion": "#84bfdc",
+    "permission": "#ffe1fa",
+    "permissionShimmer": "#f0e5fc",
+    "promptBorder": "#d7a1ea",
+    "promptBorderShimmer": "#ffe1fa",
+    "planMode": "#84bfdc",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#211932",
+    "composerSidebarBackground": "#211932",
+    "selectionBg": "#51436e"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Living · Enchanted Library",
+  "base": "dark",
+  "overrides": {
+    "claude": "#d6b485",
+    "claudeShimmer": "#ffe7b4",
+    "text": "#f5e9dc",
+    "inverseText": "#28212d",
+    "inactive": "#b5a0da",
+    "inactiveShimmer": "#f5e9dc",
+    "subtle": "#63505c",
+    "suggestion": "#b5a0da",
+    "permission": "#ffe7b4",
+    "permissionShimmer": "#f5e9dc",
+    "promptBorder": "#d6b485",
+    "promptBorderShimmer": "#ffe7b4",
+    "planMode": "#b5a0da",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#28212d",
+    "composerSidebarBackground": "#28212d",
+    "selectionBg": "#63505c"
+  }
+}

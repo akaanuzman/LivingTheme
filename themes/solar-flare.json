@@ -1,0 +1,30 @@
+{
+  "name": "Living · Solar Flare",
+  "base": "dark",
+  "overrides": {
+    "claude": "#f7b16e",
+    "claudeShimmer": "#fff0ae",
+    "text": "#f9e1d3",
+    "inverseText": "#301c19",
+    "inactive": "#e68168",
+    "inactiveShimmer": "#f9e1d3",
+    "subtle": "#78452f",
+    "suggestion": "#e68168",
+    "permission": "#fff0ae",
+    "permissionShimmer": "#f9e1d3",
+    "promptBorder": "#f7b16e",
+    "promptBorderShimmer": "#fff0ae",
+    "planMode": "#e68168",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#301c19",
+    "composerSidebarBackground": "#301c19",
+    "selectionBg": "#78452f"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Living · Synthwave Road",
+  "base": "dark",
+  "overrides": {
+    "claude": "#f0a0ca",
+    "claudeShimmer": "#ffd3a5",
+    "text": "#f3e1f4",
+    "inverseText": "#2c1c35",
+    "inactive": "#8bb8ed",
+    "inactiveShimmer": "#f3e1f4",
+    "subtle": "#69416c",
+    "suggestion": "#8bb8ed",
+    "permission": "#ffd3a5",
+    "permissionShimmer": "#f3e1f4",
+    "promptBorder": "#f0a0ca",
+    "promptBorderShimmer": "#ffd3a5",
+    "planMode": "#8bb8ed",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#2c1c35",
+    "composerSidebarBackground": "#2c1c35",
+    "selectionBg": "#69416c"
+  }
+}

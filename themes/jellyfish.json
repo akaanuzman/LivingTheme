@@ -1,0 +1,30 @@
+{
+  "name": "Living · Jellyfish",
+  "base": "dark",
+  "overrides": {
+    "claude": "#c7a5fa",
+    "claudeShimmer": "#f3d4ff",
+    "text": "#dbe8fc",
+    "inverseText": "#101c35",
+    "inactive": "#75d0e9",
+    "inactiveShimmer": "#dbe8fc",
+    "subtle": "#344f79",
+    "suggestion": "#75d0e9",
+    "permission": "#f3d4ff",
+    "permissionShimmer": "#dbe8fc",
+    "promptBorder": "#c7a5fa",
+    "promptBorderShimmer": "#f3d4ff",
+    "planMode": "#75d0e9",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#101c35",
+    "composerSidebarBackground": "#101c35",
+    "selectionBg": "#344f79"
+  }
+}

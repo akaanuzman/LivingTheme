@@ -1,0 +1,30 @@
+{
+  "name": "Living · Sky Lanterns",
+  "base": "dark",
+  "overrides": {
+    "claude": "#f0ba80",
+    "claudeShimmer": "#fff0b4",
+    "text": "#f7e7ed",
+    "inverseText": "#281e2e",
+    "inactive": "#c99dca",
+    "inactiveShimmer": "#f7e7ed",
+    "subtle": "#62465d",
+    "suggestion": "#c99dca",
+    "permission": "#fff0b4",
+    "permissionShimmer": "#f7e7ed",
+    "promptBorder": "#f0ba80",
+    "promptBorderShimmer": "#fff0b4",
+    "planMode": "#c99dca",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#281e2e",
+    "composerSidebarBackground": "#281e2e",
+    "selectionBg": "#62465d"
+  }
+}

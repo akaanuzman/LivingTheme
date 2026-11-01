@@ -1,0 +1,30 @@
+{
+  "name": "Living · Lunar Horizon",
+  "base": "dark",
+  "overrides": {
+    "claude": "#c4cadd",
+    "claudeShimmer": "#f7e7b1",
+    "text": "#e6e8ed",
+    "inverseText": "#232735",
+    "inactive": "#90afcf",
+    "inactiveShimmer": "#e6e8ed",
+    "subtle": "#4f576f",
+    "suggestion": "#90afcf",
+    "permission": "#f7e7b1",
+    "permissionShimmer": "#e6e8ed",
+    "promptBorder": "#c4cadd",
+    "promptBorderShimmer": "#f7e7b1",
+    "planMode": "#90afcf",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#232735",
+    "composerSidebarBackground": "#232735",
+    "selectionBg": "#4f576f"
+  }
+}

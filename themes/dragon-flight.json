@@ -1,0 +1,30 @@
+{
+  "name": "Living · Dragon Flight",
+  "base": "dark",
+  "overrides": {
+    "claude": "#b7a0e2",
+    "claudeShimmer": "#f5d5a1",
+    "text": "#ece4f6",
+    "inverseText": "#211b31",
+    "inactive": "#7fbaa8",
+    "inactiveShimmer": "#ece4f6",
+    "subtle": "#4c405e",
+    "suggestion": "#7fbaa8",
+    "permission": "#f5d5a1",
+    "permissionShimmer": "#ece4f6",
+    "promptBorder": "#b7a0e2",
+    "promptBorderShimmer": "#f5d5a1",
+    "planMode": "#7fbaa8",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#211b31",
+    "composerSidebarBackground": "#211b31",
+    "selectionBg": "#4c405e"
+  }
+}

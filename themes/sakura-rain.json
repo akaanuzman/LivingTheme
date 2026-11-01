@@ -1,0 +1,30 @@
+{
+  "name": "Living · Sakura Rain",
+  "base": "dark",
+  "overrides": {
+    "claude": "#f4accb",
+    "claudeShimmer": "#fff0f4",
+    "text": "#f8e6ef",
+    "inverseText": "#2b1f2b",
+    "inactive": "#cbacde",
+    "inactiveShimmer": "#f8e6ef",
+    "subtle": "#674359",
+    "suggestion": "#cbacde",
+    "permission": "#fff0f4",
+    "permissionShimmer": "#f8e6ef",
+    "promptBorder": "#f4accb",
+    "promptBorderShimmer": "#fff0f4",
+    "planMode": "#cbacde",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#2b1f2b",
+    "composerSidebarBackground": "#2b1f2b",
+    "selectionBg": "#674359"
+  }
+}

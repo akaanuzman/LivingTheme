@@ -1,0 +1,25 @@
+{
+  "name": "living-themes-terminal",
+  "version": "0.4.1",
+  "private": true,
+  "description": "Full-screen living themes around the real Claude Code, inside your existing terminal",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.cjs"
+  },
+  "dependencies": {
+    "@xterm/headless": "5.5.0",
+    "node-pty": "1.1.0"
+  },
+  "allowScripts": {
+    "node-pty@1.1.0": true,
+    "esbuild@0.25.12": true
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  }
+}

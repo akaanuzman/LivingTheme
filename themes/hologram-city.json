@@ -1,0 +1,30 @@
+{
+  "name": "Living · Hologram City",
+  "base": "dark",
+  "overrides": {
+    "claude": "#7ed4dc",
+    "claudeShimmer": "#e4fcff",
+    "text": "#e4f4fa",
+    "inverseText": "#142736",
+    "inactive": "#c8a9eb",
+    "inactiveShimmer": "#e4f4fa",
+    "subtle": "#3b586e",
+    "suggestion": "#c8a9eb",
+    "permission": "#e4fcff",
+    "permissionShimmer": "#e4f4fa",
+    "promptBorder": "#7ed4dc",
+    "promptBorderShimmer": "#e4fcff",
+    "planMode": "#c8a9eb",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#142736",
+    "composerSidebarBackground": "#142736",
+    "selectionBg": "#3b586e"
+  }
+}

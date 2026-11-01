@@ -1,0 +1,30 @@
+{
+  "name": "Living · Fireflies",
+  "base": "dark",
+  "overrides": {
+    "claude": "#d0dc7a",
+    "claudeShimmer": "#fff7a0",
+    "text": "#e6edd6",
+    "inverseText": "#14241c",
+    "inactive": "#88b69c",
+    "inactiveShimmer": "#e6edd6",
+    "subtle": "#35543b",
+    "suggestion": "#88b69c",
+    "permission": "#fff7a0",
+    "permissionShimmer": "#e6edd6",
+    "promptBorder": "#d0dc7a",
+    "promptBorderShimmer": "#fff7a0",
+    "planMode": "#88b69c",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#14241c",
+    "composerSidebarBackground": "#14241c",
+    "selectionBg": "#35543b"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Living · Orbital Station",
+  "base": "dark",
+  "overrides": {
+    "claude": "#a5d5e6",
+    "claudeShimmer": "#eff9ff",
+    "text": "#e5f0fc",
+    "inverseText": "#122536",
+    "inactive": "#dbb98b",
+    "inactiveShimmer": "#e5f0fc",
+    "subtle": "#3c5a72",
+    "suggestion": "#dbb98b",
+    "permission": "#eff9ff",
+    "permissionShimmer": "#e5f0fc",
+    "promptBorder": "#a5d5e6",
+    "promptBorderShimmer": "#eff9ff",
+    "planMode": "#dbb98b",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#122536",
+    "composerSidebarBackground": "#122536",
+    "selectionBg": "#3c5a72"
+  }
+}

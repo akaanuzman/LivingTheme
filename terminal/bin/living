@@ -1,0 +1,13 @@
+#!/bin/sh
+# Starts the real installed Claude Code in this terminal, preserving all CLI args.
+SCRIPT="$0"
+while [ -L "$SCRIPT" ]; do
+  LINK_DIR=$(CDPATH= cd -- "$(dirname -- "$SCRIPT")" && pwd)
+  LINK_TARGET=$(readlink "$SCRIPT")
+  case "$LINK_TARGET" in
+    /*) SCRIPT="$LINK_TARGET" ;;
+    *) SCRIPT="$LINK_DIR/$LINK_TARGET" ;;
+  esac
+done
+HERE=$(CDPATH= cd -- "$(dirname -- "$SCRIPT")/.." && pwd)
+exec node "$HERE/dist/living.cjs" "$@"

@@ -1,0 +1,16 @@
+src/**
+tests/**
+scripts/**
+tsconfig.json
+package-lock.json
+node_modules/**
+!node_modules/node-pty/**
+!node_modules/node-addon-api/**
+node_modules/node-pty/src/**
+node_modules/node-pty/deps/**
+node_modules/node-pty/test/**
+node_modules/node-pty/third_party/**
+node_modules/node-pty/build/Makefile
+node_modules/node-pty/build/Release/obj.target/**
+node_modules/node-pty/build/Release/.deps/**
+*.vsix

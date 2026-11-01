@@ -1,0 +1,30 @@
+{
+  "name": "Living · Rocket Launch",
+  "base": "dark",
+  "overrides": {
+    "claude": "#d2b6ed",
+    "claudeShimmer": "#ffedb0",
+    "text": "#f0e7fb",
+    "inverseText": "#221f33",
+    "inactive": "#f0b07d",
+    "inactiveShimmer": "#f0e7fb",
+    "subtle": "#54466f",
+    "suggestion": "#f0b07d",
+    "permission": "#ffedb0",
+    "permissionShimmer": "#f0e7fb",
+    "promptBorder": "#d2b6ed",
+    "promptBorderShimmer": "#ffedb0",
+    "planMode": "#f0b07d",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#221f33",
+    "composerSidebarBackground": "#221f33",
+    "selectionBg": "#54466f"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Living · Bamboo Mist",
+  "base": "dark",
+  "overrides": {
+    "claude": "#a5c98b",
+    "claudeShimmer": "#deebbd",
+    "text": "#e1efe4",
+    "inverseText": "#172923",
+    "inactive": "#a0c9ba",
+    "inactiveShimmer": "#e1efe4",
+    "subtle": "#3e5e4c",
+    "suggestion": "#a0c9ba",
+    "permission": "#deebbd",
+    "permissionShimmer": "#e1efe4",
+    "promptBorder": "#a5c98b",
+    "promptBorderShimmer": "#deebbd",
+    "planMode": "#a0c9ba",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#172923",
+    "composerSidebarBackground": "#172923",
+    "selectionBg": "#3e5e4c"
+  }
+}

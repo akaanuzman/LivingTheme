@@ -1,0 +1,30 @@
+{
+  "name": "Living · Desert Caravan",
+  "base": "dark",
+  "overrides": {
+    "claude": "#e1bb86",
+    "claudeShimmer": "#ffe6b2",
+    "text": "#f6ebda",
+    "inverseText": "#292439",
+    "inactive": "#a9a3d6",
+    "inactiveShimmer": "#f6ebda",
+    "subtle": "#655675",
+    "suggestion": "#a9a3d6",
+    "permission": "#ffe6b2",
+    "permissionShimmer": "#f6ebda",
+    "promptBorder": "#e1bb86",
+    "promptBorderShimmer": "#ffe6b2",
+    "planMode": "#a9a3d6",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#292439",
+    "composerSidebarBackground": "#292439",
+    "selectionBg": "#655675"
+  }
+}

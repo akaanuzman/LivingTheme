@@ -1,0 +1,13 @@
+.claude-plugin/types/
+.qa/
+node_modules/
+*.log
+.DS_Store
+vscode/dist/
+vscode/tests/*-runtime.cjs
+vscode/media/webview.js
+vscode/media/xterm.css
+vscode/*.vsix
+plugin/
+terminal/dist/
+terminal/shared/

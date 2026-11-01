@@ -1,0 +1,30 @@
+{
+  "name": "Living · Snow Cabin",
+  "base": "dark",
+  "overrides": {
+    "claude": "#a9c8e7",
+    "claudeShimmer": "#ffffff",
+    "text": "#e7eff7",
+    "inverseText": "#1b2634",
+    "inactive": "#f4bd80",
+    "inactiveShimmer": "#e7eff7",
+    "subtle": "#435970",
+    "suggestion": "#f4bd80",
+    "permission": "#ffffff",
+    "permissionShimmer": "#e7eff7",
+    "promptBorder": "#a9c8e7",
+    "promptBorderShimmer": "#ffffff",
+    "planMode": "#f4bd80",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#1b2634",
+    "composerSidebarBackground": "#1b2634",
+    "selectionBg": "#435970"
+  }
+}

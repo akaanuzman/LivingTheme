@@ -1,0 +1,30 @@
+{
+  "name": "Living · Butterfly Meadow",
+  "base": "dark",
+  "overrides": {
+    "claude": "#dca4df",
+    "claudeShimmer": "#fff1b8",
+    "text": "#f3eaf4",
+    "inverseText": "#1d2630",
+    "inactive": "#a0d8b2",
+    "inactiveShimmer": "#f3eaf4",
+    "subtle": "#4d5964",
+    "suggestion": "#a0d8b2",
+    "permission": "#fff1b8",
+    "permissionShimmer": "#f3eaf4",
+    "promptBorder": "#dca4df",
+    "promptBorderShimmer": "#fff1b8",
+    "planMode": "#a0d8b2",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#1d2630",
+    "composerSidebarBackground": "#1d2630",
+    "selectionBg": "#4d5964"
+  }
+}

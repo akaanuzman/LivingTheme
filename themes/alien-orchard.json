@@ -1,0 +1,30 @@
+{
+  "name": "Living · Alien Orchard",
+  "base": "dark",
+  "overrides": {
+    "claude": "#8fdbc1",
+    "claudeShimmer": "#f3ebaf",
+    "text": "#e3f5ed",
+    "inverseText": "#172b2d",
+    "inactive": "#c5a1e4",
+    "inactiveShimmer": "#e3f5ed",
+    "subtle": "#3d6266",
+    "suggestion": "#c5a1e4",
+    "permission": "#f3ebaf",
+    "permissionShimmer": "#e3f5ed",
+    "promptBorder": "#8fdbc1",
+    "promptBorderShimmer": "#f3ebaf",
+    "planMode": "#c5a1e4",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#172b2d",
+    "composerSidebarBackground": "#172b2d",
+    "selectionBg": "#3d6266"
+  }
+}

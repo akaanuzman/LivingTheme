@@ -1,0 +1,30 @@
+{
+  "name": "Living · Koi Pond",
+  "base": "dark",
+  "overrides": {
+    "claude": "#efa47d",
+    "claudeShimmer": "#fff1c7",
+    "text": "#e0f0df",
+    "inverseText": "#142a25",
+    "inactive": "#a5cd86",
+    "inactiveShimmer": "#e0f0df",
+    "subtle": "#385e50",
+    "suggestion": "#a5cd86",
+    "permission": "#fff1c7",
+    "permissionShimmer": "#e0f0df",
+    "promptBorder": "#efa47d",
+    "promptBorderShimmer": "#fff1c7",
+    "planMode": "#a5cd86",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#142a25",
+    "composerSidebarBackground": "#142a25",
+    "selectionBg": "#385e50"
+  }
+}

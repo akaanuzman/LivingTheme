@@ -1,0 +1,30 @@
+{
+  "name": "Living · Mushroom Grove",
+  "base": "dark",
+  "overrides": {
+    "claude": "#b3d792",
+    "claudeShimmer": "#eafdb4",
+    "text": "#e7f3df",
+    "inverseText": "#16241f",
+    "inactive": "#d5b1e1",
+    "inactiveShimmer": "#e7f3df",
+    "subtle": "#3c5b4b",
+    "suggestion": "#d5b1e1",
+    "permission": "#eafdb4",
+    "permissionShimmer": "#e7f3df",
+    "promptBorder": "#b3d792",
+    "promptBorderShimmer": "#eafdb4",
+    "planMode": "#d5b1e1",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#16241f",
+    "composerSidebarBackground": "#16241f",
+    "selectionBg": "#3c5b4b"
+  }
+}

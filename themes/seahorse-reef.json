@@ -1,0 +1,30 @@
+{
+  "name": "Living · Seahorse Reef",
+  "base": "dark",
+  "overrides": {
+    "claude": "#f0bd73",
+    "claudeShimmer": "#fff0c9",
+    "text": "#e3f4e7",
+    "inverseText": "#112a2a",
+    "inactive": "#75c8ac",
+    "inactiveShimmer": "#e3f4e7",
+    "subtle": "#356357",
+    "suggestion": "#75c8ac",
+    "permission": "#fff0c9",
+    "permissionShimmer": "#e3f4e7",
+    "promptBorder": "#f0bd73",
+    "promptBorderShimmer": "#fff0c9",
+    "planMode": "#75c8ac",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#112a2a",
+    "composerSidebarBackground": "#112a2a",
+    "selectionBg": "#356357"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Living · Honu Lagoon",
+  "base": "dark",
+  "overrides": {
+    "claude": "#63d4bd",
+    "claudeShimmer": "#fff1ad",
+    "text": "#d1f5ec",
+    "inverseText": "#082b30",
+    "inactive": "#e1c66b",
+    "inactiveShimmer": "#d1f5ec",
+    "subtle": "#236c71",
+    "suggestion": "#e1c66b",
+    "permission": "#fff1ad",
+    "permissionShimmer": "#d1f5ec",
+    "promptBorder": "#63d4bd",
+    "promptBorderShimmer": "#fff1ad",
+    "planMode": "#e1c66b",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#082b30",
+    "composerSidebarBackground": "#082b30",
+    "selectionBg": "#236c71"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Living · Crystal Cave",
+  "base": "dark",
+  "overrides": {
+    "claude": "#bca9fa",
+    "claudeShimmer": "#faf0ff",
+    "text": "#e6e8ff",
+    "inverseText": "#20243b",
+    "inactive": "#91d8e2",
+    "inactiveShimmer": "#e6e8ff",
+    "subtle": "#4c4d7a",
+    "suggestion": "#91d8e2",
+    "permission": "#faf0ff",
+    "permissionShimmer": "#e6e8ff",
+    "promptBorder": "#bca9fa",
+    "promptBorderShimmer": "#faf0ff",
+    "planMode": "#91d8e2",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#20243b",
+    "composerSidebarBackground": "#20243b",
+    "selectionBg": "#4c4d7a"
+  }
+}

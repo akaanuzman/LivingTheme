@@ -1,0 +1,30 @@
+{
+  "name": "Living · Thunderstorm",
+  "base": "dark",
+  "overrides": {
+    "claude": "#b9c8f0",
+    "claudeShimmer": "#f2ecff",
+    "text": "#e6effb",
+    "inverseText": "#172332",
+    "inactive": "#7d9ebc",
+    "inactiveShimmer": "#e6effb",
+    "subtle": "#3e5169",
+    "suggestion": "#7d9ebc",
+    "permission": "#f2ecff",
+    "permissionShimmer": "#e6effb",
+    "promptBorder": "#b9c8f0",
+    "promptBorderShimmer": "#f2ecff",
+    "planMode": "#7d9ebc",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#172332",
+    "composerSidebarBackground": "#172332",
+    "selectionBg": "#3e5169"
+  }
+}

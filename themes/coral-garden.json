@@ -1,0 +1,30 @@
+{
+  "name": "Living · Coral Garden",
+  "base": "dark",
+  "overrides": {
+    "claude": "#f0a49b",
+    "claudeShimmer": "#ffdfb5",
+    "text": "#e1f3ee",
+    "inverseText": "#092932",
+    "inactive": "#8ad4bd",
+    "inactiveShimmer": "#e1f3ee",
+    "subtle": "#2c5d6b",
+    "suggestion": "#8ad4bd",
+    "permission": "#ffdfb5",
+    "permissionShimmer": "#e1f3ee",
+    "promptBorder": "#f0a49b",
+    "promptBorderShimmer": "#ffdfb5",
+    "planMode": "#8ad4bd",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#092932",
+    "composerSidebarBackground": "#092932",
+    "selectionBg": "#2c5d6b"
+  }
+}

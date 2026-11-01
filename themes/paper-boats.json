@@ -1,0 +1,30 @@
+{
+  "name": "Living · Paper Boats",
+  "base": "dark",
+  "overrides": {
+    "claude": "#f0dfb3",
+    "claudeShimmer": "#ffffff",
+    "text": "#e0f3f3",
+    "inverseText": "#172e38",
+    "inactive": "#78c4ca",
+    "inactiveShimmer": "#e0f3f3",
+    "subtle": "#39616e",
+    "suggestion": "#78c4ca",
+    "permission": "#ffffff",
+    "permissionShimmer": "#e0f3f3",
+    "promptBorder": "#f0dfb3",
+    "promptBorderShimmer": "#ffffff",
+    "planMode": "#78c4ca",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#172e38",
+    "composerSidebarBackground": "#172e38",
+    "selectionBg": "#39616e"
+  }
+}

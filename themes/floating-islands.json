@@ -1,0 +1,30 @@
+{
+  "name": "Living · Floating Islands",
+  "base": "dark",
+  "overrides": {
+    "claude": "#a5d3c0",
+    "claudeShimmer": "#f5dfb2",
+    "text": "#e5f2ff",
+    "inverseText": "#172638",
+    "inactive": "#aebde9",
+    "inactiveShimmer": "#e5f2ff",
+    "subtle": "#435b73",
+    "suggestion": "#aebde9",
+    "permission": "#f5dfb2",
+    "permissionShimmer": "#e5f2ff",
+    "promptBorder": "#a5d3c0",
+    "promptBorderShimmer": "#f5dfb2",
+    "planMode": "#aebde9",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#172638",
+    "composerSidebarBackground": "#172638",
+    "selectionBg": "#435b73"
+  }
+}

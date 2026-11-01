@@ -1,0 +1,30 @@
+{
+  "name": "Living · Aurora",
+  "base": "dark",
+  "overrides": {
+    "claude": "#76d8af",
+    "claudeShimmer": "#c8f8e4",
+    "text": "#dbedf2",
+    "inverseText": "#101f2a",
+    "inactive": "#b8a0e8",
+    "inactiveShimmer": "#dbedf2",
+    "subtle": "#2b5260",
+    "suggestion": "#b8a0e8",
+    "permission": "#c8f8e4",
+    "permissionShimmer": "#dbedf2",
+    "promptBorder": "#76d8af",
+    "promptBorderShimmer": "#c8f8e4",
+    "planMode": "#b8a0e8",
+    "autoAccept": "#9dcca9",
+    "success": "#9dcca9",
+    "error": "#f0a09e",
+    "warning": "#e5ca8e",
+    "diffAdded": "#203d2d",
+    "diffRemoved": "#492a30",
+    "diffAddedWord": "#315d40",
+    "diffRemovedWord": "#6c3c46",
+    "userMessageBackground": "#101f2a",
+    "composerSidebarBackground": "#101f2a",
+    "selectionBg": "#2b5260"
+  }
+}
