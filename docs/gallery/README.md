@@ -4,4 +4,4 @@
 
 Static previews rendered by the terminal scene engine. Click the image to open it at full size. Select a theme inside Claude with `/theme`.
 
-[![All 48 Living Themes — English overview](../../assets/living-themes-overview.png)](../../assets/living-themes-overview.png)
+[![All 48 Living Themes — English overview](../../assets/living-themes-overview.en.png)](../../assets/living-themes-overview.en.png)

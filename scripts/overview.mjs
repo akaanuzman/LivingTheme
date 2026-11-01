@@ -1,0 +1,10 @@
+import {createRequire} from 'node:module';
+import {spawnSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+import {THEMES} from '../lib/catalog.js';
+const require=createRequire(import.meta.url);
+const {sceneFrame}=require('../terminal/dist/compositor.cjs');
+const scenes=THEMES.map(theme=>({theme,cells:sceneFrame(96,32,{themeId:theme.id,time:18,brightness:.9,intensity:.65,hidden:false})}));
+const result=spawnSync('python3',[fileURLToPath(new URL('render-overviews.py',import.meta.url))],{input:JSON.stringify(scenes),encoding:'utf8'});
+if(result.status!==0)throw Error(result.stderr||'Overview generation failed');
+console.log('Generated matching English and Turkish overview images.');
