@@ -6,8 +6,8 @@ root=Path(__file__).resolve().parents[2]
 version=json.loads((root/'package.json').read_text())['version']
 output=Path(sys.argv[1] if len(sys.argv)>1 else root/f'Living-Themes-Terminal-{version}-Mac-arm64.zip').resolve()
 output.parent.mkdir(parents=True,exist_ok=True)
-files=[root/name for name in ['LICENSE','README.md','package.json','tsconfig.json','.gitignore']]
-for folder in ['.claude-plugin','hooks','lib','themes','src','shared','scripts','tests','docs','plugin']:
+files=[root/name for name in ['LICENSE','README.md','README.tr.md','package.json','tsconfig.json','.gitignore']]
+for folder in ['assets','.claude-plugin','hooks','lib','themes','src','shared','scripts','tests','docs','plugin']:
  files.extend(p for p in (root/folder).rglob('*') if p.is_file() and not any(part in p.parts for part in ['types','__pycache__','.DS_Store']))
 for folder in ['src','tests','scripts','bin','dist','shell']:
  files.extend(p for p in (root/'terminal'/folder).rglob('*') if p.is_file() and '__pycache__' not in p.parts)

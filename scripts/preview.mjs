@@ -3,17 +3,29 @@ import {resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {build} from '../terminal/node_modules/esbuild/lib/main.js';
 const root=fileURLToPath(new URL('../',import.meta.url));
-const destination=resolve(process.argv[2]??resolve(root,'preview.html'));
+const args=process.argv.slice(2),index=args.indexOf('--lang');
+const language=index>=0?args.splice(index,2)[1]:'en';
+if(!['en','tr'].includes(language))throw new Error('--lang must be en or tr');
+const destination=resolve(args[0]??resolve(root,'preview.html'));
 const result=await build({stdin:{resolveDir:root,sourcefile:'preview-entry.js',contents:`
-import {THEMES} from './src/catalog.ts';import {paintWorld} from './shared/world.ts';
+import {THEMES} from './src/catalog.ts';import {paintWorld} from './shared/world.ts';import {descriptions} from './shared/descriptions.en.ts';
+const language=${JSON.stringify(language)};
 const grid=document.querySelector('#grid'),cards=[];let frozen=false,elapsed=0,last=performance.now();
 const observer=new IntersectionObserver(entries=>{for(const e of entries)e.target.visible=e.isIntersecting;},{rootMargin:'100px'});
-for(const theme of THEMES){const card=document.createElement('article'),canvas=document.createElement('canvas'),label=document.createElement('h2'),description=document.createElement('p');card.dataset.search=(theme.name+' '+theme.group+' '+theme.description).toLocaleLowerCase('tr');label.textContent=theme.name;description.textContent=theme.description;card.append(canvas,label,description);grid.append(card);observer.observe(card);cards.push({card,canvas,theme});}
-document.querySelector('#filter').addEventListener('input',event=>{const q=event.target.value.toLocaleLowerCase('tr');for(const {card} of cards)card.hidden=!card.dataset.search.includes(q);});
-document.querySelector('#pause').addEventListener('click',event=>{frozen=!frozen;event.target.textContent=frozen?'Devam et':'Duraklat';});
+for(const theme of THEMES){const card=document.createElement('article'),canvas=document.createElement('canvas'),label=document.createElement('h2'),description=document.createElement('p');card.dataset.search=(theme.name+' '+theme.group+' '+theme.description).toLocaleLowerCase(language);label.textContent=theme.name;description.textContent=language==='tr'?theme.description:descriptions[theme.id];card.dataset.search=(theme.name+' '+description.textContent).toLocaleLowerCase(language);card.append(canvas,label,description);grid.append(card);observer.observe(card);cards.push({card,canvas,theme});}
+document.querySelector('#filter').addEventListener('input',event=>{const q=event.target.value.toLocaleLowerCase(language);for(const {card} of cards)card.hidden=!card.dataset.search.includes(q);});
+document.querySelector('#pause').addEventListener('click',event=>{frozen=!frozen;event.target.textContent=frozen?(language==='tr'?'Devam et':'Resume'):(language==='tr'?'Duraklat':'Pause');});
 setInterval(()=>{const now=performance.now();if(!frozen&&!document.hidden)elapsed+=now-last;last=now;for(const {card,canvas,theme} of cards){if(card.hidden||!card.visible)continue;const width=canvas.clientWidth,height=canvas.clientHeight,dpr=Math.min(devicePixelRatio,2);if(canvas.width!==Math.round(width*dpr)||canvas.height!==Math.round(height*dpr)){canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);}const ctx=canvas.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);paintWorld(ctx,width,height,theme.id,elapsed/1000,.65);}},125);
 `},bundle:true,write:false,format:'iife',platform:'browser',target:'es2022'});
-const html=`<!doctype html><html lang="tr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Living Themes — 48 canlı dünya</title>
+const html=`<!doctype html><html lang="${language}"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Living Themes — 48 canlı dünya</title>
 <style>*{box-sizing:border-box}body{margin:0;background:#10151c;color:#e7ecf2;font:14px system-ui}main{max-width:1600px;margin:auto;padding:44px 28px}h1{font-weight:550;font-size:42px;margin:10px 0}p{color:#9daebb}header{margin-bottom:28px}nav{display:flex;gap:12px;margin-top:20px}input,button{font:inherit;border:1px solid #3d4a58;border-radius:8px;background:#1b2530;color:#e7ecf2;padding:11px 15px}input{width:300px}button{cursor:pointer}#grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}article{border:1px solid #ffffff12;border-radius:12px;overflow:hidden;background:#17202a}article[hidden]{display:none}canvas{width:100%;aspect-ratio:1.6;display:block}h2{font-size:15px;font-weight:550;margin:15px 18px 7px}article p{font-size:12px;line-height:1.5;margin:0 18px 18px}small{letter-spacing:2px;color:#90a4b6}@media(max-width:1050px){#grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:650px){#grid{grid-template-columns:1fr}main{padding:26px 15px}h1{font-size:32px}input{width:100%}}</style>
 <main><header><small>CLAUDE CODE / LIVING THEMES 0.4</small><h1>48 canlı dünya.</h1><p>24 yeni sahne. Terminalde /theme ile seç; /living ile hareketi ve parlaklığı ayarla.</p><p>Bu katalog tam alan sahne motorunun Canvas görünümüdür. Gerçek terminal, aynı sahneleri karakter hücrelerine çizer.</p><nav><input id="filter" aria-label="Tema ara" placeholder="Balinalar, uzay, Dragon Flight…"><button id="pause">Duraklat</button></nav></header><section id="grid"></section></main><script>${result.outputFiles[0].text.replaceAll('</script','<\\/script')}</script></html>`;
-await mkdir(dirname(destination),{recursive:true});await writeFile(destination,html);console.log(destination);
+const translations={
+'48 canlı dünya':'48 living worlds',
+'24 yeni sahne. Terminalde /theme ile seç; /living ile hareketi ve parlaklığı ayarla.':'24 new scenes. Choose with /theme in your terminal; adjust motion and brightness with /living.',
+'Bu katalog tam alan sahne motorunun Canvas görünümüdür. Gerçek terminal, aynı sahneleri karakter hücrelerine çizer.':'This gallery shows the full-area scene engine on Canvas. The real terminal renders the same scenes as character cells.',
+'Tema ara':'Search themes','Balinalar, uzay, Dragon Flight…':'Whales, space, Dragon Flight…','>Duraklat<':'>Pause<'
+};
+let localized=html;
+if(language==='en')for(const [from,to] of Object.entries(translations))localized=localized.replaceAll(from,to);
+await mkdir(dirname(destination),{recursive:true});await writeFile(destination,localized);console.log(destination);

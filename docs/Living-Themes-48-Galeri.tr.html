@@ -1,0 +1,992 @@
+<!doctype html><html lang="tr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Living Themes — 48 canlı dünya</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#10151c;color:#e7ecf2;font:14px system-ui}main{max-width:1600px;margin:auto;padding:44px 28px}h1{font-weight:550;font-size:42px;margin:10px 0}p{color:#9daebb}header{margin-bottom:28px}nav{display:flex;gap:12px;margin-top:20px}input,button{font:inherit;border:1px solid #3d4a58;border-radius:8px;background:#1b2530;color:#e7ecf2;padding:11px 15px}input{width:300px}button{cursor:pointer}#grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}article{border:1px solid #ffffff12;border-radius:12px;overflow:hidden;background:#17202a}article[hidden]{display:none}canvas{width:100%;aspect-ratio:1.6;display:block}h2{font-size:15px;font-weight:550;margin:15px 18px 7px}article p{font-size:12px;line-height:1.5;margin:0 18px 18px}small{letter-spacing:2px;color:#90a4b6}@media(max-width:1050px){#grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:650px){#grid{grid-template-columns:1fr}main{padding:26px 15px}h1{font-size:32px}input{width:100%}}</style>
+<main><header><small>CLAUDE CODE / LIVING THEMES 0.4</small><h1>48 canlı dünya.</h1><p>24 yeni sahne. Terminalde /theme ile seç; /living ile hareketi ve parlaklığı ayarla.</p><p>Bu katalog tam alan sahne motorunun Canvas görünümüdür. Gerçek terminal, aynı sahneleri karakter hücrelerine çizer.</p><nav><input id="filter" aria-label="Tema ara" placeholder="Balinalar, uzay, Dragon Flight…"><button id="pause">Duraklat</button></nav></header><section id="grid"></section></main><script>(() => {
+  // src/catalog.ts
+  var theme = (id, name, group, description, colors) => ({
+    id,
+    name,
+    group,
+    description,
+    palette: { bg: colors[0], text: colors[1], accent: colors[2], secondary: colors[3], muted: colors[4], glow: colors[5] }
+  });
+  var THEMES = [
+    theme("claude-ember", "Claude Ember", "Video esintileri", "K\xF6z gibi nefes alan ASCII y\u0131ld\u0131z\u0131", ["#201713", "#efdfd1", "#f5a17a", "#c8ab78", "#654432", "#ffd4a3"]),
+    theme("cloud-drift", "Cloud Drift", "Video esintileri", "G\xF6ky\xFCz\xFCnde s\xFCz\xFClen katmanl\u0131 bulutlar", ["#122536", "#e2f1ff", "#97cefa", "#c5e4f7", "#365975", "#fff0c4"]),
+    theme("honu-lagoon", "Honu Lagoon", "Video esintileri", "Mercanlar\u0131n \xFCzerinde y\xFCzen kaplumba\u011Falar", ["#082b30", "#d1f5ec", "#63d4bd", "#e1c66b", "#236c71", "#fff1ad"]),
+    theme("koi-pond", "Koi Pond", "Video esintileri", "Nil\xFCferler aras\u0131nda bal\u0131klar ve su halkalar\u0131", ["#142a25", "#e0f0df", "#efa47d", "#a5cd86", "#385e50", "#fff1c7"]),
+    theme("jellyfish", "Jellyfish", "Video esintileri", "Derin mavide y\xFCkselen \u0131\u015F\u0131kl\u0131 denizanalar\u0131", ["#101c35", "#dbe8fc", "#c7a5fa", "#75d0e9", "#344f79", "#f3d4ff"]),
+    theme("paper-boats", "Paper Boats", "Video esintileri", "Dalgalar \xFCzerinde sallanan k\xE2\u011F\u0131t tekneler", ["#172e38", "#e0f3f3", "#f0dfb3", "#78c4ca", "#39616e", "#ffffff"]),
+    theme("fireflies", "Fireflies", "Sakin do\u011Fa", "\xC7imenlerin \xFCst\xFCnde yan\u0131p s\xF6nen ate\u015F b\xF6cekleri", ["#14241c", "#e6edd6", "#d0dc7a", "#88b69c", "#35543b", "#fff7a0"]),
+    theme("moonlit", "Moonlit", "Sakin do\u011Fa", "Ay \u0131\u015F\u0131\u011F\u0131nda kayan gece bulutlar\u0131", ["#191d36", "#e8e7f6", "#bcb9f2", "#7e9dc4", "#3a4165", "#fff0c9"]),
+    theme("sakura-rain", "Sakura Rain", "Sakin do\u011Fa", "Kiraz dallar\u0131ndan d\xF6k\xFClen yapraklar", ["#2b1f2b", "#f8e6ef", "#f4accb", "#cbacde", "#674359", "#fff0f4"]),
+    theme("bamboo-mist", "Bamboo Mist", "Sakin do\u011Fa", "Bambu g\xF6vdeleri aras\u0131nda gezinen sis", ["#172923", "#e1efe4", "#a5c98b", "#a0c9ba", "#3e5e4c", "#deebbd"]),
+    theme("autumn-creek", "Autumn Creek", "Sakin do\u011Fa", "Sonbahar yapraklar\u0131 ta\u015F\u0131yan dere", ["#2b231b", "#f3e7cf", "#e4a15e", "#b8bb7b", "#68523b", "#ffe0a0"]),
+    theme("snow-cabin", "Snow Cabin", "Sakin do\u011Fa", "Kar ya\u011Farken bacas\u0131 t\xFCten da\u011F evi", ["#1b2634", "#e7eff7", "#a9c8e7", "#f4bd80", "#435970", "#ffffff"]),
+    theme("aurora", "Aurora", "Uzay", "G\xF6ky\xFCz\xFCnde k\u0131vr\u0131lan kutup \u0131\u015F\u0131\u011F\u0131 perdeleri", ["#101f2a", "#dbedf2", "#76d8af", "#b8a0e8", "#2b5260", "#c8f8e4"]),
+    theme("saturn-rings", "Saturn Rings", "Uzay", "Sat\xFCrn etraf\u0131nda d\xF6nen halka par\xE7ac\u0131klar\u0131", ["#242131", "#eee8f5", "#d9bd85", "#b9a1d6", "#5a4d6e", "#ffebc4"]),
+    theme("meteor-shower", "Meteor Shower", "Uzay", "Y\u0131ld\u0131zlar\u0131n aras\u0131ndan ge\xE7en meteorlar", ["#141d30", "#e0e9fa", "#94c5f8", "#c5b1e5", "#33496c", "#fff3cb"]),
+    theme("nebula", "Nebula", "Uzay", "Zamanla \u015Fekil de\u011Fi\u015Ftiren kozmik gaz bulutlar\u0131", ["#251c33", "#efdef8", "#d5a3e8", "#87bddc", "#634573", "#ffe0f6"]),
+    theme("lunar-horizon", "Lunar Horizon", "Uzay", "Kraterli ufukta y\xFCkselen uzak y\u0131ld\u0131z", ["#232735", "#e6e8ed", "#c4cadd", "#90afcf", "#4f576f", "#f7e7b1"]),
+    theme("solar-flare", "Solar Flare", "Uzay", "G\xFCne\u015F y\xFCzeyinden y\xFCkselen plazma kemerleri", ["#301c19", "#f9e1d3", "#f7b16e", "#e68168", "#78452f", "#fff0ae"]),
+    theme("neon-tokyo", "Neon Tokyo", "\u015Eehir ve fantastik", "Ya\u011Fmurlu sokaklarda titreyen neonlar", ["#201e31", "#eae3f6", "#eb9dcc", "#86cfe0", "#53496b", "#ffe5a0"]),
+    theme("matrix-rain", "Matrix Rain", "\u015Eehir ve fantastik", "S\xFCtunlar boyunca akan karakterler", ["#102219", "#d7f5df", "#89d99d", "#b9e67e", "#2c6541", "#e4ffbd"]),
+    theme("synthwave-road", "Synthwave Road", "\u015Eehir ve fantastik", "G\xFCne\u015Fin alt\u0131nda akan perspektif yol", ["#2c1c35", "#f3e1f4", "#f0a0ca", "#8bb8ed", "#69416c", "#ffd3a5"]),
+    theme("clockwork-garden", "Clockwork Garden", "\u015Eehir ve fantastik", "Yapraklar aras\u0131nda d\xF6nen pirin\xE7 di\u015Fliler", ["#24291e", "#ecebd5", "#d2bd7d", "#9ecb9a", "#576044", "#fff1af"]),
+    theme("crystal-cave", "Crystal Cave", "\u015Eehir ve fantastik", "Kristallerde dola\u015Fan \u0131\u015F\u0131k k\u0131r\u0131lmalar\u0131", ["#20243b", "#e6e8ff", "#bca9fa", "#91d8e2", "#4c4d7a", "#faf0ff"]),
+    theme("lava-forge", "Lava Forge", "\u015Eehir ve fantastik", "Ta\u015Flar\u0131n aras\u0131ndan akan lav ve k\u0131v\u0131lc\u0131mlar", ["#2d201d", "#f1e2d8", "#eda073", "#d9bd79", "#715043", "#ffe1a2"]),
+    theme("whale-song", "Whale Song", "Okyanusun derinlikleri", "Dev balinalar, \u0131\u015F\u0131k huzmeleri ve y\xFCkselen k\xF6p\xFCkler", ["#071c2b", "#def0f9", "#7cb8db", "#64d8cb", "#234b61", "#e0fbff"]),
+    theme("manta-ballet", "Manta Ballet", "Okyanusun derinlikleri", "Dalgalanan geni\u015F kanatlar\u0131yla s\xFCz\xFClen vatozlar", ["#081f2d", "#dcecf5", "#9ed7e5", "#64a7de", "#294e69", "#daf9fa"]),
+    theme("seahorse-reef", "Seahorse Reef", "Okyanusun derinlikleri", "K\u0131vr\u0131k kuyruklu denizatlar\u0131 ve sal\u0131nan yosunlar", ["#112a2a", "#e3f4e7", "#f0bd73", "#75c8ac", "#356357", "#fff0c9"]),
+    theme("octopus-den", "Octopus Den", "Okyanusun derinlikleri", "K\u0131vr\u0131lan sekiz kol ve ma\u011Fara i\xE7inde \u0131\u015F\u0131kl\u0131 planktonlar", ["#211932", "#f0e5fc", "#d7a1ea", "#84bfdc", "#51436e", "#ffe1fa"]),
+    theme("coral-garden", "Coral Garden", "Okyanusun derinlikleri", "Dallanan mercan orman\u0131 ve reng\xE2renk bal\u0131k s\xFCr\xFCleri", ["#092932", "#e1f3ee", "#f0a49b", "#8ad4bd", "#2c5d6b", "#ffdfb5"]),
+    theme("submarine-voyage", "Submarine Voyage", "Okyanusun derinlikleri", "D\xF6nen pervane, ayd\u0131nl\u0131k lombozlar ve kabarc\u0131k izi", ["#102635", "#ecf1df", "#e4c77c", "#84c4d1", "#3a596a", "#fff3b2"]),
+    theme("dragon-flight", "Dragon Flight", "G\xF6ky\xFCz\xFC masallar\u0131", "G\xF6ky\xFCz\xFCnde kanat \xE7\u0131rpan dev ejderha ve da\u011F siluetleri", ["#211b31", "#ece4f6", "#b7a0e2", "#7fbaa8", "#4c405e", "#f5d5a1"]),
+    theme("phoenix-rise", "Phoenix Rise", "G\xF6ky\xFCz\xFC masallar\u0131", "Alev kanatl\u0131 anka, akan kuyruk t\xFCyleri ve k\u0131v\u0131lc\u0131mlar", ["#291b25", "#f9e6dc", "#eea176", "#d28ea8", "#6b3d43", "#fff1ab"]),
+    theme("butterfly-meadow", "Butterfly Meadow", "G\xF6ky\xFCz\xFC masallar\u0131", "Kanat \xE7\u0131rpan kelebekler, \xE7i\xE7ekler ve u\xE7u\u015Fan polenler", ["#1d2630", "#f3eaf4", "#dca4df", "#a0d8b2", "#4d5964", "#fff1b8"]),
+    theme("floating-islands", "Floating Islands", "G\xF6ky\xFCz\xFC masallar\u0131", "Havada s\xFCz\xFClen adalar ve a\u015Fa\u011F\u0131 d\xF6k\xFClen \u015Felaleler", ["#172638", "#e5f2ff", "#a5d3c0", "#aebde9", "#435b73", "#f5dfb2"]),
+    theme("sky-lanterns", "Sky Lanterns", "G\xF6ky\xFCz\xFC masallar\u0131", "Y\u0131ld\u0131zl\u0131 gecede y\xFCkselen b\xFCy\xFCk k\xE2\u011F\u0131t fenerler", ["#281e2e", "#f7e7ed", "#f0ba80", "#c99dca", "#62465d", "#fff0b4"]),
+    theme("thunderstorm", "Thunderstorm", "G\xF6ky\xFCz\xFC masallar\u0131", "Koyu f\u0131rt\u0131na bulutlar\u0131, sa\u011Fanak ve \xE7atallanan \u015Fim\u015Fekler", ["#172332", "#e6effb", "#b9c8f0", "#7d9ebc", "#3e5169", "#f2ecff"]),
+    theme("mushroom-grove", "Mushroom Grove", "Sakl\u0131 d\xFCnyalar", "I\u015F\u0131kl\u0131 dev mantarlar ve aralar\u0131nda dola\u015Fan sporlar", ["#16241f", "#e7f3df", "#b3d792", "#d5b1e1", "#3c5b4b", "#eafdb4"]),
+    theme("enchanted-library", "Enchanted Library", "Sakl\u0131 d\xFCnyalar", "U\xE7u\u015Fan kitaplar, dev raflar ve d\xF6nen sihirli harfler", ["#28212d", "#f5e9dc", "#d6b485", "#b5a0da", "#63505c", "#ffe7b4"]),
+    theme("teahouse-rain", "Teahouse Rain", "Sakl\u0131 d\xFCnyalar", "\xC7ay fincan\u0131ndan y\xFCkselen buhar ve pencere ard\u0131nda ya\u011Fmur", ["#232b29", "#f1ecdc", "#c9bc91", "#9ec4bd", "#52635a", "#ffe9bb"]),
+    theme("desert-caravan", "Desert Caravan", "Sakl\u0131 d\xFCnyalar", "Hilal alt\u0131nda ilerleyen develer ve kayan kum tepeleri", ["#292439", "#f6ebda", "#e1bb86", "#a9a3d6", "#655675", "#ffe6b2"]),
+    theme("bonsai-zen", "Bonsai Zen", "Sakl\u0131 d\xFCnyalar", "Budanm\u0131\u015F bonsai, taranm\u0131\u015F kum ve yava\u015F d\xFC\u015Fen yapraklar", ["#202b25", "#e6efde", "#a9c38d", "#d4bd8b", "#53684f", "#edf5c6"]),
+    theme("midnight-express", "Midnight Express", "Sakl\u0131 d\xFCnyalar", "Gece treninin ayd\u0131nl\u0131k vagonlar\u0131 ve kayan y\u0131ld\u0131zl\u0131 manzara", ["#1c2432", "#e9eef7", "#d2b890", "#91b4d9", "#42556e", "#ffe9b4"]),
+    theme("black-hole", "Black Hole", "Kozmik oyun alan\u0131", "Kara deli\u011Fin \xE7evresinde akan e\u011Fik birikim diski", ["#151a2c", "#e9e8fa", "#e4ad80", "#b39de3", "#3f4569", "#fff0ce"]),
+    theme("orbital-station", "Orbital Station", "Kozmik oyun alan\u0131", "D\xF6nen uzay istasyonu, g\xFCne\u015F panelleri ve y\xF6r\xFCnge izleri", ["#122536", "#e5f0fc", "#a5d5e6", "#dbb98b", "#3c5a72", "#eff9ff"]),
+    theme("rocket-launch", "Rocket Launch", "Kozmik oyun alan\u0131", "Y\xFCkselen roket, motor alevi ve geni\u015Fleyen duman bulutu", ["#221f33", "#f0e7fb", "#d2b6ed", "#f0b07d", "#54466f", "#ffedb0"]),
+    theme("alien-orchard", "Alien Orchard", "Kozmik oyun alan\u0131", "Yabanc\u0131 gezegende sal\u0131nan \u0131\u015F\u0131kl\u0131 a\u011Fa\xE7lar ve iki ay", ["#172b2d", "#e3f5ed", "#8fdbc1", "#c5a1e4", "#3d6266", "#f3ebaf"]),
+    theme("retro-arcade", "Retro Arcade", "Kozmik oyun alan\u0131", "Hareket eden uzayl\u0131 filosu, piksel gemisi ve lazerler", ["#201c35", "#f4e9ff", "#bda0f0", "#88d7d1", "#4c426c", "#ffe7a3"]),
+    theme("hologram-city", "Hologram City", "Kozmik oyun alan\u0131", "Y\xFCzen holografik kuleler ve hareket eden veri k\xF6pr\xFCleri", ["#142736", "#e4f4fa", "#7ed4dc", "#c8a9eb", "#3b586e", "#e4fcff"])
+  ];
+
+  // shared/world.ts
+  var TAU = Math.PI * 2;
+  var fract = (x) => x - Math.floor(x);
+  var rnd = (n) => fract(Math.sin(n * 127.1 + 311.7) * 43758.5453);
+  var wrap = (n, size) => (n % size + size) % size;
+  var clamp = (n, a = 0, b = 1) => Math.max(a, Math.min(b, n));
+  var mix = (a, b, t) => {
+    const c = (s, i) => parseInt(s.slice(i, i + 2), 16);
+    return "#" + [1, 3, 5].map((i) => Math.round(c(a, i) * (1 - t) + c(b, i) * t).toString(16).padStart(2, "0")).join("");
+  };
+  function paintWorld(ctx, w, h, id, time, intensity = 0.65) {
+    const theme2 = THEMES.find((t2) => t2.id === id) ?? THEMES[0];
+    const p = theme2.palette, t = time * (0.3 + clamp(intensity) * 0.9), scale = clamp(Math.min(w / 1150, h / 640), 0.55, 1.65);
+    const stepX = 7.5 * scale, stepY = 10 * scale;
+    ctx.clearRect(0, 0, w, h);
+    const bg = ctx.createLinearGradient(0, 0, w, h);
+    bg.addColorStop(0, mix(p.bg, p.secondary, 0.18));
+    bg.addColorStop(0.48, p.bg);
+    bg.addColorStop(1, mix(p.bg, p.accent, 0.25));
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, w, h);
+    ctx.font = `${9 * scale}px Menlo, monospace`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    function char(x, y, g, color = p.accent, alpha = 1) {
+      if (x < -stepX || x > w + stepX || y < -stepY || y > h + stepY) return;
+      ctx.globalAlpha = clamp(alpha);
+      ctx.fillStyle = color;
+      ctx.fillText(g, x, y);
+    }
+    function glow(x, y, r, color, power = 0.2) {
+      ctx.globalAlpha = power;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, color);
+      g.addColorStop(1, "transparent");
+      ctx.fillStyle = g;
+      ctx.fillRect(x - r, y - r, r * 2, r * 2);
+      ctx.globalAlpha = 1;
+    }
+    function mask(cx, cy, rx, ry, field, color = p.accent, angle = 0, alpha = 1) {
+      const cos = Math.cos(angle), sin = Math.sin(angle), bound = Math.max(rx, ry) * 1.4;
+      const x0 = Math.max(0, Math.floor((cx - bound) / stepX)), x1 = Math.min(w / stepX, Math.ceil((cx + bound) / stepX));
+      const y0 = Math.max(0, Math.floor((cy - bound) / stepY)), y1 = Math.min(h / stepY, Math.ceil((cy + bound) / stepY));
+      for (let gy = y0; gy < y1; gy++) for (let gx = x0; gx < x1; gx++) {
+        const dx = gx * stepX - cx, dy = gy * stepY - cy, x = (dx * cos + dy * sin) / rx, y = (-dx * sin + dy * cos) / ry;
+        const density = field(x, y);
+        if (density <= 0) continue;
+        const glyph = ".:;t%S#"[Math.min(6, Math.floor(density * 6 + rnd(gx + gy * 47) * 0.7))] ?? "#";
+        char(gx * stepX, gy * stepY, glyph, mix(color, p.glow, clamp(density - 0.55) * 0.7), alpha * (0.6 + density * 0.4));
+      }
+    }
+    function stars(count = 85) {
+      for (let i = 0; i < count; i++) {
+        const a = 0.22 + 0.65 * (0.5 + 0.5 * Math.sin(t * 0.55 + i * 2));
+        char(rnd(i + 1) * w, rnd(i + 42) * h, rnd(i + 9) > 0.92 ? "+" : ".", i % 4 ? p.secondary : p.glow, a);
+      }
+    }
+    function grid2() {
+      ctx.globalAlpha = 0.06;
+      ctx.strokeStyle = p.secondary;
+      ctx.lineWidth = 0.5;
+      ctx.beginPath();
+      for (let x = 0; x < w; x += 40 * scale) {
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, h);
+      }
+      for (let y = 0; y < h; y += 40 * scale) {
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+      }
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+    function water() {
+      for (let y = 0; y < h; y += stepY * 2) for (let x = 0; x < w; x += stepX * 2) {
+        const n = Math.sin(x * 0.018 + t * 0.4 + y * 0.014) + Math.sin(y * 0.036 - t * 0.35);
+        if (n > 0.3) char(x, y, n > 1.4 ? "~" : ".", p.secondary, 0.1 + n * 0.05);
+      }
+    }
+    function ring(cx, cy, phase) {
+      const rx = (10 + phase * 120) * scale, ry = rx * 0.26;
+      mask(cx, cy, rx, ry, (x, y) => Math.abs(x * x + y * y - 1) < 0.065 ? 0.6 : 0, p.secondary, 0, (1 - phase) * 0.6);
+    }
+    function cloud(cx, cy, size, color = p.secondary, alpha = 0.8) {
+      mask(cx, cy, size, size * 0.48, (x, y) => {
+        const a = Math.max(1 - ((x + 0.42) ** 2 + (y + 0.05) ** 2) * 3, 1 - ((x - 0.1) ** 2 + (y + 0.35) ** 2) * 2.4, 1 - ((x - 0.53) ** 2 + (y + 0.05) ** 2) * 4, 1 - (x * x * 0.6 + (y - 0.3) ** 2 * 4));
+        return y < 0.8 && a > 0 ? clamp(a * 0.65 + 0.2) : 0;
+      }, color, 0, alpha);
+    }
+    function fish(cx, cy, size, angle, color = p.accent, phase = 0) {
+      mask(cx, cy, size, size * 0.46, (x, y) => {
+        const body = 1 - x * x - y * y;
+        const tail = x < -0.7 && x > -1.32 && Math.abs(y - Math.sin(t * 1.6 + phase) * 0.1) < (-x - 0.63) * 1.15;
+        const fin = Math.abs(x + 0.13) < 0.35 && Math.abs(y) > 0.5 && Math.abs(y) < 1.15 - Math.abs(x + 0.13) * 0.5;
+        if (tail || fin) return 0.55;
+        if (body <= 0) return 0;
+        return clamp(0.28 + body * 0.65 + 0.15 * Math.sin(x * 9 + y * 7 + phase));
+      }, color, angle);
+      const ex = cx + Math.cos(angle) * size * 0.56 - Math.sin(angle) * (-size * 0.11), ey = cy + Math.sin(angle) * size * 0.56 + Math.cos(angle) * (-size * 0.11);
+      char(ex, ey, "o", p.bg);
+      char(ex + scale, ey - scale, ".", p.glow);
+    }
+    function jelly(cx, cy, size, color = p.accent, phase = 0) {
+      glow(cx, cy, size * 1.7, color, 0.13);
+      const pulse = 1 + Math.sin(t * 0.9 + phase) * 0.08;
+      mask(cx, cy, size * pulse, size * 0.8, (x, y) => {
+        if (y > 0.1 || y < -1) return 0;
+        const d = 1 - x * x - y * y;
+        return d > 0 ? clamp(0.2 + d * 0.65 + 0.15 * Math.cos(x * 13)) : 0;
+      }, color);
+      for (let k = 0; k < 7; k++) for (let y = 0; y < size * 2.3; y += stepY) {
+        const x = cx + (k - 3) * size * 0.2 + Math.sin(y * 0.03 + t * 1.2 + k + phase) * size * 0.12;
+        char(x, cy + y, y % 3 ? "|" : ":", k % 2 ? p.secondary : color, 0.75 - y / (size * 4));
+      }
+    }
+    function turtle(cx, cy, size, angle) {
+      mask(cx, cy, size, size * 0.76, (x, y) => {
+        const shell = 1 - x * x - y * y;
+        const head = ((x - 1.05) / 0.42) ** 2 + (y / 0.38) ** 2 < 1;
+        const flipper = Math.abs(x) < 0.75 && Math.abs(y) > 0.55 && Math.abs(y) < 1.4 - Math.abs(x) * 0.5;
+        if (head || flipper) return 0.7;
+        if (shell > 0) return 0.45 + 0.35 * Math.abs(Math.sin(x * 8) * Math.cos(y * 7));
+        return 0;
+      }, p.accent, angle);
+    }
+    function leaves(count, color = p.accent) {
+      for (let i = 0; i < count; i++) {
+        const x = wrap(rnd(i + 33) * w + t * (7 + rnd(i) * 8) + Math.sin(t * 0.5 + i) * 20, w), y = wrap(rnd(i + 87) * h + t * (5 + rnd(i + 6) * 10), h);
+        mask(x, y, 9 * scale, 5 * scale, (a, b) => a * a + b * b < 1 ? 0.7 : 0, color, Math.sin(t + i));
+      }
+    }
+    function ridge(y, amplitude, color = p.muted) {
+      for (let x = 0; x < w; x += stepX) {
+        const yy = y + Math.sin(x * 7e-3) * amplitude + Math.sin(x * 0.02 + 2) * amplitude * 0.25;
+        char(x, yy, "_", color, 0.7);
+      }
+    }
+    function tree(x, y, height) {
+      for (let yy = 0; yy < height; yy += stepY) {
+        const spread = (height - yy) * 0.27;
+        for (let xx = -spread; xx < spread; xx += stepX) char(x + xx, y - height + yy, yy < height * 0.8 ? "^" : "|", p.muted, 0.8);
+      }
+    }
+    function buildings() {
+      for (let i = 0; i < 13; i++) {
+        const x = i * w / 12, bw = 55 * scale, bh = (80 + rnd(i + 50) * 190) * scale;
+        for (let yy = h - bh; yy < h; yy += stepY) for (let xx = x; xx < x + bw; xx += stepX) {
+          const edge = xx < x + stepX || xx > x + bw - stepX || yy < h - bh + stepY;
+          char(xx, yy, edge ? "#" : rnd(xx + yy) > 0.64 ? ":" : " ", edge ? p.muted : p.secondary, edge ? 0.6 : 0.45);
+        }
+      }
+    }
+    grid2();
+    switch (id) {
+      case "koi-pond": {
+        water();
+        glow(w * 0.75, h * 0.3, Math.max(w, h) * 0.7, p.secondary, 0.18);
+        for (let i = 0; i < 9; i++) ring(rnd(i + 12) * w, rnd(i + 31) * h, fract(t * 0.08 + i * 0.19));
+        for (let i = 0; i < 5; i++) {
+          const x = w * (0.12 + rnd(i + 11) * 0.78) + Math.sin(t * 0.11 + i) * w * 0.06, y = h * (0.15 + rnd(i + 24) * 0.7) + Math.cos(t * 0.12 + i) * h * 0.08;
+          fish(x, y, (57 + rnd(i + 9) * 35) * scale, Math.sin(t * 0.09 + i) * 0.5 + (i % 2 ? Math.PI : 0), i % 2 ? p.accent : p.glow, i);
+        }
+        for (let i = 0; i < 8; i++) {
+          const x = rnd(i + 114) * w, y = rnd(i + 211) * h;
+          mask(x, y, 30 * scale, 17 * scale, (a, b) => a * a + b * b < 1 && !(a > 0 && Math.abs(b) < a * 0.4) ? 0.65 : 0, p.muted, 0.4);
+        }
+        break;
+      }
+      case "jellyfish": {
+        water();
+        for (let i = 0; i < 6; i++) {
+          const x = w * (0.12 + rnd(i + 15) * 0.8) + Math.sin(t * 0.13 + i) * 35 * scale, y = wrap(h * rnd(i + 52) + h - t * (3 + i * 0.4), h + 180 * scale) - 70 * scale;
+          jelly(x, y, (30 + rnd(i + 9) * 44) * scale, i % 2 ? p.secondary : p.accent, i);
+        }
+        for (let i = 0; i < 50; i++) char(rnd(i + 1) * w, wrap(rnd(i + 83) * h - t * 5, h), "o", p.secondary, 0.2);
+        break;
+      }
+      case "cloud-drift": {
+        glow(w * 0.8, h * 0.2, 220 * scale, p.glow, 0.3);
+        mask(w * 0.8, h * 0.22, 42 * scale, 42 * scale, (x, y) => x * x + y * y < 1 ? 0.85 : 0, p.glow);
+        for (let layer = 0; layer < 3; layer++) for (let i = 0; i < 5; i++) cloud(wrap(i * w * 0.29 + t * (4 + layer * 3), w + 300 * scale) - 130 * scale, h * (0.2 + layer * 0.29) + Math.sin(i) * 45 * scale, (70 + layer * 32) * scale, layer === 0 ? p.muted : p.secondary, 0.4 + layer * 0.15);
+        break;
+      }
+      case "honu-lagoon": {
+        water();
+        glow(w * 0.85, 0, Math.max(w, h) * 0.9, p.secondary, 0.3);
+        for (let i = 0; i < 5; i++) turtle(wrap(rnd(i + 16) * w + t * (5 + i), w + 200 * scale) - 80 * scale, h * (0.13 + rnd(i + 7) * 0.74) + Math.sin(t * 0.12 + i) * 25 * scale, (40 + rnd(i + 41) * 30) * scale, 0.2 * Math.sin(t * 0.1 + i));
+        for (let i = 0; i < 20; i++) {
+          const x = i * w / 19;
+          for (let y = 0; y < 55 * scale; y += stepY) char(x + Math.sin(y * 0.1 + t * 0.3 + i) * 8 * scale, h - y, y < stepY ? "Y" : "|", p.muted, 0.8);
+        }
+        break;
+      }
+      case "claude-ember": {
+        stars(80);
+        glow(w * 0.77, h * 0.4, 250 * scale, p.accent, 0.25);
+        mask(w * 0.77, h * 0.4, 160 * scale, 160 * scale, (x, y) => {
+          const r = Math.hypot(x, y), angle = Math.atan2(y, x);
+          return r < 0.43 + Math.abs(Math.cos(angle * 6)) * 0.57 ? clamp(1 - r * 0.4) : 0;
+        }, p.accent, t * 0.04);
+        for (let i = 0; i < 35; i++) char(rnd(i + 21) * w, wrap(rnd(i + 43) * h - t * (7 + rnd(i) * 8), h), i % 3 ? "." : "+", p.glow, 0.5);
+        break;
+      }
+      case "paper-boats": {
+        water();
+        for (let i = 0; i < 6; i++) {
+          const cx = wrap(i * w * 0.23 + t * 6, w + 200 * scale) - 80 * scale, cy = h * (0.18 + rnd(i + 29) * 0.66) + Math.sin(t * 0.7 + i) * 8 * scale, s = (40 + rnd(i + 8) * 26) * scale;
+          mask(cx, cy, s, s * 0.65, (x, y) => y > 0.15 && y < 0.7 && Math.abs(x) < 1 - (y - 0.15) * 0.5 ? 0.7 : y < 0.1 && y > -1 && x < 0.05 && x > -(y + 1) * 0.8 ? 0.85 : 0, p.accent, Math.sin(t * 0.6 + i) * 0.07);
+          ring(cx, cy + s * 0.5, fract(t * 0.07 + i * 0.3));
+        }
+        break;
+      }
+      case "fireflies": {
+        for (let i = 0; i < 14; i++) tree(i * w / 13, h * 0.92, (70 + rnd(i + 1) * 180) * scale);
+        for (let i = 0; i < 90; i++) {
+          const x = rnd(i + 5) * w + Math.sin(t * 0.2 + i) * 22 * scale, y = h * (0.2 + rnd(i + 21) * 0.65) + Math.cos(t * 0.3 + i) * 18 * scale, a = 0.5 + 0.5 * Math.sin(t * 1.2 + i * 3);
+          if (a > 0.65) glow(x, y, 15 * scale, p.glow, a * 0.15);
+          char(x, y, a > 0.8 ? "*" : ".", p.glow, a * 0.8);
+        }
+        break;
+      }
+      case "moonlit": {
+        stars(100);
+        glow(w * 0.78, h * 0.23, 150 * scale, p.glow, 0.18);
+        mask(w * 0.78, h * 0.23, 57 * scale, 57 * scale, (x, y) => x * x + y * y < 1 && (x - 0.38) ** 2 + (y + 0.18) ** 2 > 0.85 ? 0.85 : 0, p.glow);
+        for (let i = 0; i < 4; i++) cloud(wrap(i * w * 0.38 + t * 3, w + 300) - 150, h * (0.3 + i * 0.13), 85 * scale, p.muted, 0.6);
+        ridge(h * 0.82, 28 * scale);
+        for (let i = 0; i < 10; i++) tree(i * w / 9, h, (45 + rnd(i + 9) * 85) * scale);
+        break;
+      }
+      case "sakura-rain": {
+        for (let branch = 0; branch < 5; branch++) {
+          const ax = w * 0.04, ay = h * 0.12, by = h * (0.05 + branch * 0.15);
+          for (let x = 0; x < w * 0.43; x += stepX) {
+            const y = ay + (by - ay) * x / (w * 0.43) + Math.sin(x * 0.01) * 20 * scale;
+            char(x, y, "#", p.muted, 0.7);
+            if (rnd(x + branch) > 0.6) char(x + stepX, y - stepY, "*", p.accent, 0.8);
+          }
+        }
+        leaves(65);
+        glow(w * 0.15, h * 0.16, 250 * scale, p.accent, 0.15);
+        break;
+      }
+      case "bamboo-mist": {
+        for (let i = 0; i < 22; i++) {
+          const x = rnd(i + 1) * w;
+          for (let y = 0; y < h; y += stepY) {
+            char(x + Math.sin(y * 3e-3 + t * 0.2) * 3 * scale, y, Math.floor(y / stepY) % 8 === 0 ? "=" : "|", i % 2 ? p.secondary : p.muted, 0.65);
+            if (Math.floor(y / stepY) % 9 === 0) for (let k = 1; k < 7; k++) char(x + k * stepX, y - k * stepY * 0.4, "/", p.accent, 0.5);
+          }
+        }
+        for (let i = 0; i < 5; i++) cloud(wrap(i * w * 0.29 + t * 5, w + 400) - 200, h * (0.2 + i * 0.17), 180 * scale, p.secondary, 0.1);
+        break;
+      }
+      case "autumn-creek": {
+        water();
+        for (let side = 0; side < 2; side++) for (let i = 0; i < 9; i++) mask(side ? w - rnd(i + 42) * w * 0.15 : rnd(i + 12) * w * 0.17, rnd(i + 61) * h, 45 * scale, 29 * scale, (x, y) => x * x + y * y < 1 ? 0.6 : 0, p.muted);
+        leaves(40, p.accent);
+        for (let i = 0; i < 7; i++) ring(rnd(i + 77) * w, rnd(i + 31) * h, fract(t * 0.06 + i * 0.21));
+        break;
+      }
+      case "snow-cabin": {
+        stars(25);
+        ridge(h * 0.8, 18 * scale, p.secondary);
+        for (let i = 0; i < 10; i++) tree(rnd(i + 1) * w, h * 0.82, (65 + rnd(i + 5) * 110) * scale);
+        const x = w * 0.76, y = h * 0.73;
+        mask(x, y, 82 * scale, 68 * scale, (a, b) => b > -0.15 && b < 0.8 && Math.abs(a) < 0.75 ? 0.55 : b < -0.15 && b > -1 && Math.abs(a) < (b + 1) * 1.2 ? 0.8 : 0, p.secondary);
+        mask(x, y + 10 * scale, 14 * scale, 17 * scale, (a, b) => Math.abs(a) < 1 && Math.abs(b) < 1 ? 0.9 : 0, p.glow);
+        for (let i = 0; i < 100; i++) char(wrap(rnd(i + 2) * w + Math.sin(t * 0.2 + i) * 20, w), wrap(rnd(i + 7) * h + t * (10 + rnd(i) * 14), h), i % 5 ? "." : "*", p.text, 0.3 + rnd(i + 7) * 0.5);
+        break;
+      }
+      case "aurora": {
+        stars(120);
+        for (let x = 0; x < w; x += stepX) {
+          const center = h * (0.2 + 0.15 * Math.sin(x * 3e-3 + t * 0.15) + 0.08 * Math.sin(x * 8e-3 - t * 0.1));
+          for (let dy = 0; dy < h * 0.35; dy += stepY) {
+            const a = Math.sin(Math.PI * dy / (h * 0.35)) * 0.5;
+            char(x, center + dy, dy < h * 0.12 ? "|" : ":", Math.sin(x * 6e-3 + t * 0.1) > 0 ? p.accent : p.secondary, a);
+          }
+        }
+        ridge(h * 0.9, 20 * scale);
+        break;
+      }
+      case "saturn-rings": {
+        stars(110);
+        const x = w * 0.73, y = h * 0.42, s = 110 * scale;
+        mask(x, y, s * 2, s * 0.65, (a, b) => {
+          const r = a * a + b * b;
+          return r > 0.5 && r < 1 ? 0.6 : 0;
+        }, p.secondary, -0.23);
+        mask(x, y, s, s, (a, b) => {
+          const q = 1 - a * a - b * b;
+          return q > 0 ? 0.4 + q * 0.35 + 0.15 * Math.sin(b * 18) : 0;
+        }, p.accent);
+        for (let i = 0; i < 9; i++) {
+          const a = t * 0.06 + i * TAU / 9;
+          char(x + Math.cos(a) * s * 1.9, y + Math.sin(a) * s * 0.59 - Math.cos(a) * s * 0.35, "*", p.glow, 0.9);
+        }
+        break;
+      }
+      case "meteor-shower": {
+        stars(170);
+        for (let i = 0; i < 7; i++) {
+          const phase = fract(t * 0.035 + i * 0.147), x = phase * (w + 200) - 100, y = phase * h * 0.6 + rnd(i + 53) * h * 0.3;
+          for (let k = 0; k < 18; k++) char(x - k * stepX, y - k * stepY * 0.4, k === 0 ? "*" : "-", p.glow, (1 - k / 18) * 0.8);
+        }
+        ridge(h * 0.9, 24 * scale);
+        break;
+      }
+      case "nebula": {
+        stars(80);
+        for (let y = 0; y < h; y += stepY) for (let x = 0; x < w; x += stepX) {
+          const n = Math.sin(x * 7e-3 + t * 0.08) + Math.cos(y * 0.012 - t * 0.11) + Math.sin(x * 4e-3 + y * 9e-3 + t * 0.08);
+          if (n > 0.45) char(x, y, n > 1.7 ? "%" : n > 1 ? ":" : ".", n > 1.6 ? p.accent : p.secondary, clamp(n * 0.16));
+        }
+        glow(w * 0.8, h * 0.6, 200 * scale, p.accent, 0.15);
+        break;
+      }
+      case "lunar-horizon": {
+        stars(100);
+        ridge(h * 0.76, 25 * scale, p.secondary);
+        for (let y = h * 0.79; y < h; y += stepY) for (let x = 0; x < w; x += stepX) if (rnd(x + y * 3) > 0.7) char(x, y, ":", p.muted, 0.6);
+        for (let i = 0; i < 9; i++) mask(rnd(i + 3) * w, h * (0.83 + rnd(i + 8) * 0.16), (20 + rnd(i + 22) * 25) * scale, 8 * scale, (a, b) => Math.abs(a * a + b * b - 1) < 0.2 ? 0.6 : 0, p.secondary);
+        mask(w * 0.72, h * (0.26 + 0.05 * Math.sin(t * 0.03)), 36 * scale, 36 * scale, (a, b) => a * a + b * b < 1 ? 0.7 : 0, p.glow);
+        break;
+      }
+      case "solar-flare": {
+        stars(40);
+        const x = w * 0.8, y = h * 0.7, r = 150 * scale;
+        glow(x, y, r * 2.5, p.accent, 0.4);
+        mask(x, y, r, r, (a, b) => a * a + b * b < 1 ? 0.5 + 0.3 * Math.sin(a * 12 + b * 9 + t * 0.5) ** 2 : 0, p.accent);
+        for (let i = 0; i < 12; i++) {
+          const a = i * TAU / 12 + t * 0.025;
+          for (let k = 0; k < 18; k++) {
+            const radius = r * (1 + k * 0.035);
+            char(x + Math.cos(a + Math.sin(k * 0.2 + t * 0.2) * 0.07) * radius, y + Math.sin(a) * radius, ":", p.glow, (1 - k / 18) * 0.7);
+          }
+        }
+        break;
+      }
+      case "neon-tokyo": {
+        buildings();
+        glow(w * 0.76, h * 0.6, 230 * scale, p.accent, 0.25);
+        const labels = ["RAMEN", "24H", "TOKYO"];
+        for (let i = 0; i < 3; i++) {
+          const s = labels[i];
+          for (let k = 0; k < s.length; k++) char(w * (0.16 + i * 0.3) + k * stepX, h * (0.32 + i * 0.15), s[k], i % 2 ? p.secondary : p.accent, 0.7 + 0.2 * Math.sin(t + i));
+        }
+        for (let i = 0; i < 150; i++) {
+          const x = rnd(i + 2) * w, y = wrap(rnd(i + 4) * h + t * 80, h);
+          char(x, y, "/", p.secondary, 0.2);
+        }
+        break;
+      }
+      case "matrix-rain": {
+        const glyphs = "01ST#:=+<>[]";
+        for (let x = 0; x < w; x += stepX * 3) {
+          const head = wrap(t * (25 + rnd(x) * 30) + rnd(x + 5) * h, h + 180) - 40;
+          for (let k = 0; k < 18; k++) {
+            const y = wrap(head - k * stepY, h + 180) - 40;
+            char(x, y, glyphs[Math.floor(rnd(x + k + Math.floor(t * 2)) * glyphs.length)], k === 0 ? p.glow : p.accent, (1 - k / 18) * 0.8);
+          }
+        }
+        break;
+      }
+      case "synthwave-road": {
+        stars(50);
+        const cx = w * 0.6, hy = h * 0.45;
+        mask(cx, hy - 30 * scale, 85 * scale, 85 * scale, (a, b) => a * a + b * b < 1 && Math.floor((b + 1) * 11) % 3 !== 0 ? 0.8 : 0, p.accent);
+        for (let y = hy; y < h; y += stepY) {
+          const depth = (y - hy) / (h - hy), line = fract(depth - t * 0.12);
+          for (let x = 0; x < w; x += stepX) {
+            const road = Math.abs((x - cx) / (w * (depth + 0.05)));
+            if (Math.abs(fract(road * 4) - 0.5) < 0.07 || line < 0.04) char(x, y, "+", p.secondary, 0.25 + depth * 0.3);
+          }
+        }
+        break;
+      }
+      case "clockwork-garden": {
+        for (let i = 0; i < 8; i++) {
+          const x = rnd(i + 7) * w, y = rnd(i + 17) * h, r = (35 + rnd(i + 29) * 55) * scale, a = t * 0.12 * (i % 2 ? 1 : -1);
+          mask(x, y, r, r, (u, v) => {
+            const rr = Math.hypot(u, v), aa = Math.atan2(v, u) + a;
+            return rr > 0.58 && rr < 0.85 + Math.cos(aa * 10) * 0.13 ? 0.7 : rr < 0.15 ? 0.9 : Math.abs(Math.sin(aa * 3)) < 0.12 && rr < 0.7 ? 0.5 : 0;
+          }, p.accent);
+        }
+        leaves(20, p.secondary);
+        break;
+      }
+      case "crystal-cave": {
+        for (let i = 0; i < 14; i++) {
+          const x = rnd(i + 9) * w, y = h * (0.18 + rnd(i + 6) * 0.65), rx = (23 + rnd(i + 8) * 38) * scale, ry = rx * (1.3 + rnd(i) * 1.3);
+          mask(x, y, rx, ry, (a, b) => Math.abs(a) + Math.abs(b) < 1 ? 0.35 + 0.35 * (1 - Math.abs(a)) + 0.15 * Math.sin(t * 0.3 + i) : 0, i % 2 ? p.secondary : p.accent, rnd(i + 1) * 0.5 - 0.25);
+          if (Math.sin(t * 0.5 + i) > 0.8) glow(x, y, rx * 1.8, p.glow, 0.15);
+        }
+        break;
+      }
+      case "lava-forge": {
+        for (let y = 0; y < h; y += stepY) for (let x = 0; x < w; x += stepX) {
+          const flow = Math.sin(x * 9e-3 + t * 0.15) + Math.cos(y * 0.018 - t * 0.3) + Math.sin((x + y) * 0.012);
+          if (flow > 0.55) char(x, y, flow > 1.8 ? "#" : flow > 1.2 ? "%" : ":", flow > 1.8 ? p.glow : p.accent, 0.3 + clamp(flow * 0.12));
+          else if (rnd(x + y) > 0.8) char(x, y, "_", p.muted, 0.5);
+        }
+        for (let i = 0; i < 30; i++) char(rnd(i + 33) * w + Math.sin(t + i) * 10, wrap(rnd(i + 43) * h - t * 18, h), "'", p.glow, 0.7);
+        break;
+      }
+      case "whale-song": {
+        water();
+        for (let beam = 0; beam < 5; beam++) for (let y = 0; y < h; y += stepY * 2) {
+          const x = w * (0.12 + beam * 0.21) + y * 0.18 + Math.sin(t * 0.12 + beam) * 18 * scale;
+          char(x, y, ":", p.secondary, 0.13 * (1 - y / h));
+        }
+        for (let i = 0; i < 3; i++) {
+          const x = w * (0.24 + i * 0.29) + Math.sin(t * 0.08 + i) * w * 0.07, y = h * (0.25 + i * 0.25) + Math.cos(t * 0.11 + i) * 20 * scale, s = (100 - i * 17) * scale, a = Math.sin(t * 0.09 + i) * 0.12;
+          mask(x, y, s, s * 0.35, (u, v) => {
+            const body = 1 - u * u - v * v;
+            if (body > 0) return 0.35 + body * 0.5;
+            return u < -0.73 && u > -1.4 && Math.abs(v - Math.sin(t * 0.9 + i) * 0.2) < (-u - 0.7) * 1.5 ? 0.7 : 0;
+          }, i === 1 ? p.secondary : p.accent, a);
+          mask(x - s * 0.15, y + s * 0.22, s * 0.3, s * 0.17, (u, v) => Math.abs(u) + Math.abs(v) < 1 ? 0.65 : 0, p.secondary, -0.35);
+          char(x + s * 0.6, y - s * 0.04, "o", p.glow);
+          for (let j = 0; j < 6; j++) char(x + s * (0.15 + j * 0.07), y + s * 0.17, "_", p.secondary, 0.7);
+          for (let j = 0; j < 8; j++) {
+            const q = fract(t * 0.18 + j * 0.125);
+            char(x + s * 0.28 + Math.sin(q * 5 + j) * s * 0.18, y - s * 0.28 - q * s * 0.7, j % 2 ? "." : "'", p.glow, (1 - q) * 0.5);
+          }
+        }
+        break;
+      }
+      case "manta-ballet": {
+        water();
+        for (let i = 0; i < 4; i++) {
+          const x = w * (0.18 + rnd(i + 14) * 0.65) + Math.sin(t * 0.08 + i) * w * 0.08, y = h * (0.14 + i * 0.22) + Math.cos(t * 0.12 + i) * 25 * scale, s = (85 + rnd(i + 23) * 35) * scale, flap = Math.sin(t * 0.8 + i) * 0.28;
+          mask(x, y, s, s * 0.68, (u, v) => {
+            const wing = Math.abs(u), center = -0.05 + wing * flap;
+            return wing < 1 && Math.abs(v - center) < (1 - wing) * 0.65 ? 0.35 + (1 - wing) * 0.5 : Math.abs(u) < 0.13 && v > -0.7 && v < 0.6 ? 0.8 : 0;
+          }, i % 2 ? p.secondary : p.accent, Math.sin(t * 0.1 + i) * 0.2);
+          for (let k = 0; k < 18; k++) char(x + Math.sin(k * 0.18 + t * 0.5 + i) * s * 0.07, y + s * 0.26 + k * stepY * 0.75, k % 3 ? ":" : "|", p.secondary, 0.65 - k * 0.025);
+          char(x - s * 0.08, y - s * 0.19, ".", p.glow);
+          char(x + s * 0.08, y - s * 0.19, ".", p.glow);
+        }
+        break;
+      }
+      case "seahorse-reef": {
+        water();
+        for (let i = 0; i < 14; i++) for (let y = 0; y < h * 0.28; y += stepY) char(i * w / 13 + Math.sin(y * 0.03 + t * 0.35 + i) * 12 * scale, h - y, "|", p.muted, 0.8);
+        for (let i = 0; i < 4; i++) {
+          const x = w * (0.19 + i * 0.22) + Math.sin(t * 0.2 + i) * 18 * scale, y = h * (0.24 + rnd(i + 12) * 0.35), s = (55 + rnd(i + 7) * 20) * scale;
+          mask(x, y, s * 0.44, s * 0.32, (u, v) => u * u + v * v < 1 ? 0.6 + 0.3 * (1 - v * v) : 0, p.accent);
+          for (let k = 0; k < 6; k++) char(x + s * 0.24 + k * stepX * 0.65, y + s * 0.03, "=", p.secondary, 0.8);
+          char(x + s * 0.1, y - s * 0.1, "o", p.glow);
+          for (let k = 0; k < 30; k++) {
+            const q = k / 29;
+            const xx = x - s * 0.1 + Math.sin(q * 3.6) * s * 0.35, yy = y + s * 0.1 + q * s;
+            char(xx, yy, "#", p.accent);
+            char(xx + stepX, yy, ":", p.secondary);
+          }
+          for (let a = 0; a < Math.PI * 2.2; a += 0.15) {
+            const r = (1 - a / (Math.PI * 2.6)) * s * 0.36;
+            char(x - s * 0.18 + Math.cos(a) * r, y + s * 1.2 + Math.sin(a) * r, ":", p.secondary, 0.8);
+          }
+          for (let k = 0; k < 6; k++) char(x - s * 0.35 - k * stepX * 0.7, y + s * 0.4 + Math.sin(t * 2 + i + k) * stepY, "/", p.glow, 0.5);
+        }
+        break;
+      }
+      case "octopus-den": {
+        const x = w * 0.65 + Math.sin(t * 0.09) * w * 0.05, y = h * 0.35 + Math.sin(t * 0.22) * 20 * scale, s = 105 * scale;
+        glow(x, y, s * 2, p.accent, 0.16);
+        mask(x, y, s * 0.75, s * 0.85, (u, v) => {
+          const r = u * u + v * v;
+          return r < 1 && v < 0.65 ? 0.35 + (1 - r) * 0.6 : 0;
+        }, p.accent);
+        for (let arm = 0; arm < 8; arm++) for (let k = 0; k < 36; k++) {
+          const q = k / 35, a = (arm / 7 - 0.5) * 2.2, xx = x + Math.sin(a) * s * (0.2 + q * 1.4) + Math.sin(q * 7 + t * 0.65 + arm) * s * 0.18 * q, yy = y + s * 0.45 + q * s * (1.2 - Math.abs(a) * 0.3);
+          char(xx, yy, k % 4 ? "%" : "o", arm % 2 ? p.secondary : p.accent, 0.9 - q * 0.35);
+        }
+        char(x - s * 0.28, y + s * 0.08, "O", p.glow);
+        char(x + s * 0.28, y + s * 0.08, "O", p.glow);
+        for (let i = 0; i < 70; i++) char(rnd(i + 10) * w, wrap(rnd(i + 28) * h - t * (2 + rnd(i)), h), ".", p.secondary, 0.2 + 0.2 * Math.sin(t + i));
+        ridge(h * 0.95, 25 * scale);
+        break;
+      }
+      case "coral-garden": {
+        let coral2 = function(x, y, len, angle, depth, color) {
+          const sway = Math.sin(t * 0.3 + x * 0.01) * 0.08, dx = Math.cos(angle + sway), dy = Math.sin(angle + sway);
+          for (let q = 0; q < len; q += stepY * 0.7) char(x + dx * q, y + dy * q, depth ? "#" : "+", color, 0.55 + depth * 0.1);
+          const xx = x + dx * len, yy = y + dy * len;
+          if (depth > 0) {
+            coral2(xx, yy, len * 0.66, angle - 0.55, depth - 1, color);
+            coral2(xx, yy, len * 0.61, angle + 0.5, depth - 1, color);
+          } else char(xx, yy, "*", p.glow, 0.55 + 0.25 * Math.sin(t * 0.8 + x));
+        };
+        var coral = coral2;
+        water();
+        for (let i = 0; i < 10; i++) coral2((i + 0.4) * w / 10, h + 10 * scale, (38 + rnd(i + 30) * 45) * scale, -Math.PI / 2, 3, i % 2 ? p.accent : p.secondary);
+        for (let i = 0; i < 12; i++) {
+          const x = wrap(rnd(i + 5) * w + t * (7 + i * 0.6), w + 80) - 40, y = h * (0.12 + rnd(i + 44) * 0.4) + Math.sin(t * 0.35 + i) * 10 * scale;
+          fish(x, y, (17 + rnd(i) * 9) * scale, 0, i % 2 ? p.glow : p.accent, i);
+        }
+        break;
+      }
+      case "submarine-voyage": {
+        water();
+        const x = w * 0.62 + Math.sin(t * 0.1) * w * 0.08, y = h * 0.48 + Math.sin(t * 0.3) * 15 * scale, s = 140 * scale;
+        mask(x, y, s, s * 0.37, (u, v) => u * u + v * v < 1 ? 0.4 + 0.35 * (1 - v) : 0, p.accent);
+        mask(x - s * 0.08, y - s * 0.39, s * 0.27, s * 0.16, (u, v) => Math.abs(u) < 1 && Math.abs(v) < 1 ? 0.65 : 0, p.secondary);
+        for (let k = 0; k < 5; k++) char(x - s * 0.07, y - s * 0.5 - k * stepY, "|", p.secondary, 0.8);
+        char(x + s * 0.02, y - s * 0.8, "=", p.glow);
+        for (let i = 0; i < 4; i++) {
+          const xx = x + s * (-0.45 + i * 0.32);
+          mask(xx, y, s * 0.09, s * 0.09, (u, v) => u * u + v * v < 1 ? 0.9 : 0, p.glow);
+        }
+        for (let k = 0; k < 4; k++) {
+          const a = t * 2 + k * Math.PI / 2;
+          char(x - s * 1.05 + Math.cos(a) * s * 0.12, y + Math.sin(a) * s * 0.24, "#", p.secondary);
+        }
+        for (let i = 0; i < 25; i++) {
+          const q = fract(t * 0.17 + i * 0.043);
+          char(x - s * (1 + q * 1.3), y - q * s * 0.7 + Math.sin(i) * s * 0.2, i % 3 ? "o" : ".", p.secondary, (1 - q) * 0.7);
+        }
+        break;
+      }
+      case "dragon-flight": {
+        stars(45);
+        ridge(h * 0.86, 50 * scale, p.muted);
+        ridge(h * 0.95, 25 * scale, p.secondary);
+        const x = w * 0.65 + Math.sin(t * 0.08) * w * 0.06, y = h * 0.38 + Math.sin(t * 0.3) * 22 * scale, s = 115 * scale, flap = Math.sin(t * 0.9);
+        for (const side of [-1, 1]) mask(x + side * s * 0.5, y - s * 0.18, s * 0.95, s * 0.8, (u, v) => {
+          const wing = Math.abs(u);
+          return wing < 1 && v < 0.25 + flap * 0.3 && v > -0.7 + wing * 0.6 && Math.sin((u + 1) * 5) > -0.75 ? 0.65 : 0;
+        }, p.secondary, side * 0.25);
+        mask(x, y, s * 0.8, s * 0.3, (u, v) => u * u + v * v < 1 ? 0.7 : 0, p.accent, 0.12);
+        mask(x + s * 0.73, y - s * 0.24, s * 0.32, s * 0.2, (u, v) => Math.abs(u) + Math.abs(v) < 1.25 ? 0.8 : 0, p.accent, -0.35);
+        char(x + s * 0.87, y - s * 0.28, "o", p.glow);
+        for (let k = 0; k < 35; k++) {
+          const q = k / 34;
+          char(x - s * (0.55 + q), y + Math.sin(q * 4 + t * 0.5) * s * 0.27, "#", p.accent, 1 - q * 0.6);
+        }
+        for (let k = 0; k < 10; k++) char(x - s * 0.25 + k * stepX, y - s * 0.22, "^", p.glow, 0.7);
+        break;
+      }
+      case "phoenix-rise": {
+        stars(45);
+        const x = w * 0.67 + Math.sin(t * 0.1) * 25 * scale, y = h * 0.38 + Math.cos(t * 0.24) * 20 * scale, s = 100 * scale;
+        glow(x, y, s * 2.5, p.accent, 0.21);
+        mask(x, y, s * 0.24, s * 0.75, (u, v) => u * u + v * v < 1 ? 0.75 : 0, p.glow);
+        for (const side of [-1, 1]) for (let feather = 0; feather < 12; feather++) {
+          const a = -0.5 - feather * 0.08 + Math.sin(t * 0.8) * 0.22, r = s * (0.75 + feather * 0.04);
+          for (let k = 0; k < 16; k++) {
+            const q = k / 15;
+            char(x + side * (s * 0.12 + Math.cos(a) * r * q), y + Math.sin(a) * r * q + feather * stepY * 0.35, k % 3 ? "%" : "*", feather % 2 ? p.accent : p.secondary, 0.8 - q * 0.2);
+          }
+        }
+        for (let tail = 0; tail < 7; tail++) for (let k = 0; k < 28; k++) {
+          const q = k / 27;
+          char(x + (tail - 3) * s * 0.09 + Math.sin(q * 5 + t * 0.8 + tail) * s * 0.15 * q, y + s * 0.3 + q * s * 1.7, k % 3 ? ":" : "*", tail % 2 ? p.accent : p.glow, 1 - q * 0.65);
+        }
+        for (let i = 0; i < 50; i++) char(rnd(i + 31) * w, wrap(rnd(i + 18) * h - t * 18, h), i % 4 ? "." : "+", p.glow, 0.45);
+        break;
+      }
+      case "butterfly-meadow": {
+        for (let i = 0; i < 24; i++) {
+          const x = rnd(i + 15) * w, y = h * (0.78 + rnd(i + 44) * 0.2);
+          for (let k = 0; k < 5; k++) char(x + Math.sin(t * 0.4 + i) * k * scale, y + k * stepY, "|", p.muted, 0.7);
+          mask(x, y, 12 * scale, 10 * scale, (u, v) => Math.abs(Math.hypot(u, v) - 0.55) < 0.3 ? 0.7 : 0, i % 2 ? p.accent : p.glow);
+        }
+        for (let i = 0; i < 7; i++) {
+          const x = w * (0.1 + rnd(i + 2) * 0.8) + Math.sin(t * 0.17 + i) * w * 0.04, y = h * (0.15 + rnd(i + 52) * 0.5) + Math.cos(t * 0.25 + i) * h * 0.05, s = (24 + rnd(i + 16) * 25) * scale, flap = 0.3 + 0.7 * Math.abs(Math.sin(t * 1.5 + i));
+          for (const side of [-1, 1]) mask(x + side * s * 0.45 * flap, y, s * 0.65 * flap, s * 0.7, (u, v) => u * u + v * v < 1 ? 0.4 + 0.4 * Math.abs(Math.sin(u * 6 + v * 4)) : 0, i % 2 ? p.secondary : p.accent, side * 0.3);
+          for (let k = -2; k <= 2; k++) char(x, y + k * stepY * 0.6, "|", p.glow);
+        }
+        for (let i = 0; i < 40; i++) char(wrap(rnd(i) * w + t * 3, w), rnd(i + 19) * h, ".", p.glow, 0.2);
+        break;
+      }
+      case "floating-islands": {
+        for (let i = 0; i < 5; i++) {
+          const x = (0.12 + i * 0.22) * w + Math.sin(t * 0.08 + i) * 20 * scale, y = h * (0.23 + rnd(i + 11) * 0.48) + Math.sin(t * 0.2 + i) * 10 * scale, s = (65 + rnd(i + 9) * 35) * scale;
+          mask(x, y, s, s * 0.55, (u, v) => v > -0.08 && v < 1 && Math.abs(u) < 1 - v * 0.72 ? 0.45 + 0.3 * (1 - v) : 0, p.muted);
+          mask(x, y - s * 0.05, s, s * 0.16, (u, v) => u * u + v * v < 1 ? 0.65 : 0, p.accent);
+          tree(x - s * 0.15, y - s * 0.1, s * 0.72);
+          for (let col = 0; col < 3; col++) for (let k = 0; k < 20; k++) char(x + s * 0.35 + col * stepX, y + k * stepY, fract(k * 0.2 + t * 0.8) < 0.4 ? "|" : ":", p.secondary, 0.7 - k * 0.026);
+        }
+        for (let i = 0; i < 4; i++) cloud(wrap(i * w * 0.35 + t * 6, w + 200) - 100, h * (0.15 + i * 0.22), 85 * scale, p.secondary, 0.18);
+        break;
+      }
+      case "sky-lanterns": {
+        stars(100);
+        ridge(h * 0.95, 30 * scale);
+        for (let i = 0; i < 11; i++) {
+          const x = rnd(i + 34) * w + Math.sin(t * 0.16 + i) * 20 * scale, y = wrap(rnd(i + 17) * h - t * (4 + rnd(i) * 4), h + 180 * scale) - 80 * scale, s = (22 + rnd(i + 61) * 25) * scale;
+          glow(x, y, s * 2.1, p.accent, 0.16);
+          mask(x, y, s * 0.7, s, (u, v) => Math.abs(u) < 0.75 + 0.2 * Math.cos(v * 2) && Math.abs(v) < 0.85 ? 0.5 + 0.25 * (1 - Math.abs(u)) : 0, p.accent);
+          for (let k = -2; k <= 2; k++) char(x + k * stepX, y + s * 0.78, "_", p.secondary, 0.8);
+          char(x, y + s * 0.65, Math.sin(t * 3 + i) > 0 ? "*" : ":", p.glow);
+        }
+        break;
+      }
+      case "thunderstorm": {
+        for (let layer = 0; layer < 3; layer++) for (let i = 0; i < 5; i++) cloud(wrap(i * w * 0.28 + t * (5 + layer * 2), w + 200) - 100, h * (0.03 + layer * 0.13), (105 + layer * 20) * scale, p.secondary, 0.3 + layer * 0.16);
+        for (let i = 0; i < 210; i++) {
+          const y = wrap(rnd(i + 14) * h + t * (85 + rnd(i) * 40), h);
+          char(wrap(rnd(i + 31) * w - y * 0.18, w), y, "/", p.accent, 0.15 + rnd(i) * 0.2);
+        }
+        const flash = clamp((Math.sin(t * 0.55) - 0.82) / 0.18);
+        if (flash > 0) {
+          const x = w * 0.7;
+          glow(x, h * 0.35, 300 * scale, p.glow, flash * 0.3);
+          for (let k = 0; k < 30; k++) {
+            const y = h * 0.18 + k * stepY;
+            char(x + Math.sin(Math.floor(k / 4) * 5) * 35 * scale, y, k % 5 ? "|" : "/", p.glow, flash);
+            if (k > 13 && k < 23) char(x + Math.sin(3) * 35 * scale + (k - 13) * stepX, y, "\\", p.glow, flash * 0.7);
+          }
+        }
+        ridge(h * 0.9, 25 * scale);
+        break;
+      }
+      case "mushroom-grove": {
+        for (let i = 0; i < 9; i++) {
+          const x = (i + 0.4) * w / 9, y = h * (0.5 + rnd(i + 4) * 0.4), s = (38 + rnd(i + 6) * 52) * scale;
+          glow(x, y - s * 0.25, s * 1.3, i % 2 ? p.accent : p.secondary, 0.13);
+          mask(x, y + s * 0.24, s * 0.18, s * 0.55, (u, v) => Math.abs(u) < 0.8 - 0.15 * v && Math.abs(v) < 1 ? 0.65 : 0, p.muted);
+          mask(x, y - s * 0.15, s, s * 0.6, (u, v) => u * u + v * v < 1 && v < 0.2 ? 0.4 + 0.4 * (1 - u * u) : 0, i % 2 ? p.accent : p.secondary);
+          for (let j = 0; j < 5; j++) char(x + (rnd(i * 10 + j) - 0.5) * s * 1.4, y - s * (0.2 + rnd(j + 3) * 0.3), "o", p.glow, 0.7);
+        }
+        for (let i = 0; i < 65; i++) char(wrap(rnd(i + 21) * w + Math.sin(t * 0.3 + i) * 15, w), wrap(rnd(i + 41) * h - t * 5, h), i % 5 ? "." : "*", p.glow, 0.3 + 0.2 * Math.sin(t + i));
+        break;
+      }
+      case "enchanted-library": {
+        for (let shelf = 0; shelf < 4; shelf++) {
+          const y = h * (0.15 + shelf * 0.23);
+          for (let x = 0; x < w; x += stepX) char(x, y, "=", p.muted, 0.6);
+          for (let book = 0; book < 25; book++) {
+            const x = book * w / 24, hh = (15 + rnd(book + shelf * 33) * 28) * scale;
+            for (let yy = y - hh; yy < y; yy += stepY) char(x, yy, "|", book % 3 ? p.secondary : p.accent, 0.45);
+          }
+        }
+        for (let i = 0; i < 5; i++) {
+          const x = w * (0.15 + rnd(i + 1) * 0.72) + Math.sin(t * 0.17 + i) * 30 * scale, y = h * (0.22 + rnd(i + 8) * 0.5) + Math.cos(t * 0.2 + i) * 18 * scale, s = (25 + rnd(i + 17) * 15) * scale;
+          mask(x, y, s, s * 0.65, (u, v) => Math.abs(u) < 1 && Math.abs(v - (1 - Math.abs(u)) * 0.3) < 0.6 ? 0.7 : 0, p.glow, Math.sin(t * 0.4 + i) * 0.2);
+          for (let k = 0; k < 4; k++) char(x + (k - 2) * stepX, y, "=", p.accent);
+        }
+        for (let i = 0; i < 45; i++) {
+          const a = t * 0.14 + i, rad = (55 + rnd(i) * 110) * scale;
+          char(w * 0.68 + Math.cos(a) * rad, h * 0.45 + Math.sin(a) * rad * 0.65, "*:+=?"[i % 5], p.accent, 0.35);
+        }
+        break;
+      }
+      case "teahouse-rain": {
+        for (let i = 0; i < 120; i++) {
+          const x2 = rnd(i + 31) * w, y2 = wrap(rnd(i + 7) * h + t * 40, h * 0.65);
+          char(x2, y2, "|", p.secondary, 0.15);
+        }
+        for (const xx of [w * 0.08, w * 0.5, w * 0.92]) for (let y2 = 0; y2 < h * 0.64; y2 += stepY) char(xx, y2, "|", p.muted, 0.65);
+        for (let x2 = 0; x2 < w; x2 += stepX) {
+          char(x2, h * 0.64, "_", p.muted, 0.8);
+          char(x2, h * 0.86, "=", p.muted, 0.7);
+        }
+        const x = w * 0.68, y = h * 0.7, s = 95 * scale;
+        mask(x, y, s, s * 0.53, (u, v) => Math.abs(u) < 1 - v * 0.25 && v > -0.5 && v < 0.8 ? 0.65 : 0, p.accent);
+        mask(x, y - s * 0.3, s, s * 0.18, (u, v) => u * u + v * v < 1 ? 0.65 : 0, p.muted);
+        mask(x + s * 0.98, y, s * 0.35, s * 0.32, (u, v) => Math.abs(u * u + v * v - 0.65) < 0.3 ? 0.65 : 0, p.accent);
+        mask(x, y + s * 0.56, s * 1.3, s * 0.1, (u, v) => u * u + v * v < 1 ? 0.55 : 0, p.secondary);
+        for (let plume = 0; plume < 3; plume++) for (let k = 0; k < 24; k++) {
+          const q = k / 23;
+          char(x + (plume - 1) * s * 0.4 + Math.sin(q * 5 + t * 0.7 + plume) * s * 0.14, y - s * 0.48 - q * s * 1.5, "~", p.glow, (1 - q) * 0.5);
+        }
+        break;
+      }
+      case "desert-caravan": {
+        stars(80);
+        mask(w * 0.8, h * 0.18, 32 * scale, 32 * scale, (u, v) => u * u + v * v < 1 && (u - 0.4) ** 2 + (v + 0.15) ** 2 > 0.75 ? 0.8 : 0, p.glow);
+        for (let layer = 0; layer < 3; layer++) {
+          for (let x = 0; x < w; x += stepX) {
+            const y = h * (0.55 + layer * 0.15) + Math.sin(x * 4e-3 - layer * 2 + t * 0.025) * h * 0.07;
+            char(x, y, "_", layer % 2 ? p.secondary : p.muted, 0.7);
+          }
+        }
+        for (let i = 0; i < 4; i++) {
+          const x = wrap(i * w * 0.27 + t * 4, w + 120) - 50, y = h * 0.69 + Math.sin(i) * 20 * scale, s = 50 * scale;
+          mask(x, y, s, s * 0.4, (u, v) => u * u + v * v < 1 || Math.abs(u + 0.1) < 0.45 && v > -1.4 && v < 0 ? 0.65 : 0, p.accent);
+          for (let k = 0; k < 6; k++) char(x + s * 0.8, y - k * stepY * 0.8, "|", p.accent);
+          char(x + s * 0.96, y - s * 0.8, "o", p.glow);
+          for (let leg = 0; leg < 4; leg++) for (let k = 0; k < 5; k++) char(x + s * (-0.55 + leg * 0.35) + Math.sin(t * 0.8 + leg * Math.PI) * k * scale, y + s * 0.3 + k * stepY, "|", p.accent, 0.85);
+        }
+        break;
+      }
+      case "bonsai-zen": {
+        for (let y2 = h * 0.58; y2 < h; y2 += stepY * 2) for (let x2 = 0; x2 < w; x2 += stepX * 2) {
+          const d = Math.hypot((x2 - w * 0.5) * 0.7, y2 - h * 0.72);
+          if (Math.sin(d * 0.1 - t * 0.04) > 0.7) char(x2, y2, "~", p.muted, 0.4);
+        }
+        const x = w * 0.67, y = h * 0.57, s = 140 * scale;
+        for (let k = 0; k < 16; k++) {
+          const q = k / 15;
+          char(x - Math.sin(q * 3) * s * 0.16, y - q * s * 0.9, "#", p.accent);
+          char(x - Math.sin(q * 3) * s * 0.16 + stepX, y - q * s * 0.9, "#", p.muted);
+        }
+        for (let i = 0; i < 6; i++) {
+          const cx = x + Math.sin(i * 2) * s * 0.6, cy = y - s * (0.5 + i * 0.08);
+          mask(cx, cy, s * (0.42 - i * 0.025), s * 0.17, (u, v) => u * u + v * v < 1 ? 0.65 : 0, p.accent);
+        }
+        mask(x, y + s * 0.13, s * 0.65, s * 0.22, (u, v) => Math.abs(u) < 0.85 + v * 0.12 && Math.abs(v) < 1 ? 0.55 : 0, p.secondary);
+        for (let i = 0; i < 16; i++) {
+          const q = fract(t * 0.035 + i * 0.067);
+          char(x + Math.sin(q * 4 + i) * s, y - s + q * s * 1.5, "'", p.glow, 0.5);
+        }
+        break;
+      }
+      case "midnight-express": {
+        stars(100);
+        mask(w * 0.8, h * 0.16, 25 * scale, 25 * scale, (u, v) => u * u + v * v < 1 ? 0.8 : 0, p.glow);
+        for (let i = 0; i < 14; i++) tree(wrap(i * w * 0.12 - t * 17, w + 100) - 50, h * 0.58, (35 + rnd(i + 3) * 55) * scale);
+        const y = h * 0.69;
+        for (let car = 0; car < 4; car++) {
+          const x = w * (0.12 + car * 0.23), bw = w * 0.19, bh = 58 * scale;
+          mask(x, y, bw * 0.5, bh * 0.5, (u, v) => Math.abs(u) < 1 && Math.abs(v) < 1 ? 0.6 : 0, p.secondary);
+          for (let i = 0; i < 4; i++) mask(x + bw * (-0.32 + i * 0.22), y - bh * 0.08, bw * 0.065, bh * 0.15, (u, v) => Math.abs(u) < 1 && Math.abs(v) < 1 ? 0.85 : 0, p.glow);
+          for (const side of [-1, 1]) {
+            const xx = x + side * bw * 0.32, yy = y + bh * 0.55;
+            mask(xx, yy, 12 * scale, 12 * scale, (u, v) => u * u + v * v < 1 ? 0.55 : 0, p.muted);
+            char(xx + Math.cos(t * 1.4) * 8 * scale, yy + Math.sin(t * 1.4) * 8 * scale, "+", p.accent);
+          }
+        }
+        for (let x = 0; x < w; x += stepX) {
+          char(x, y + 48 * scale, "=", p.muted, 0.75);
+          if (fract(x * 0.02 + t * 0.4) < 0.3) char(x, y + 60 * scale, "#", p.muted, 0.6);
+        }
+        break;
+      }
+      case "black-hole": {
+        stars(120);
+        const x = w * 0.68, y = h * 0.46, s = 125 * scale;
+        for (let band = 0; band < 7; band++) for (let k = 0; k < 130; k++) {
+          const a = k * TAU / 130 + t * (0.08 + band * 0.012), r = s * (1.05 + band * 0.1), xx = Math.cos(a) * r, yy = Math.sin(a) * r * 0.32;
+          char(x + xx, y + yy + xx * 0.18, k % 3 ? ":" : "*", band % 2 ? p.accent : p.secondary, 0.4 + Math.sin(a) * 0.2);
+        }
+        mask(x, y, s * 0.72, s * 0.72, (u, v) => Math.abs(u * u + v * v - 1) < 0.16 ? 0.9 : 0, p.glow);
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = p.bg;
+        for (let yy = -s * 0.61; yy < s * 0.61; yy += stepY * 0.5) {
+          const half = Math.sqrt(Math.max(0, (s * 0.61) ** 2 - yy * yy));
+          ctx.fillRect(x - half, y + yy, half * 2, stepY * 0.5);
+        }
+        for (let i = 0; i < 22; i++) {
+          const a = t * 0.2 + i * 0.4, r = s * (1.9 - fract(t * 0.03 + i * 0.17) * 0.9);
+          char(x + Math.cos(a) * r, y + Math.sin(a) * r * 0.7, ".", p.secondary, 0.55);
+        }
+        break;
+      }
+      case "orbital-station": {
+        stars(150);
+        const x = w * 0.66, y = h * 0.46, s = 100 * scale, a = t * 0.075;
+        mask(w * 0.1, h * 1.1, w * 0.6, h * 0.42, (u, v) => Math.abs(u * u + v * v - 1) < 0.09 ? 0.65 : 0, p.secondary);
+        for (let k = 0; k < 120; k++) {
+          const aa = k * TAU / 120;
+          char(x + Math.cos(aa) * s, y + Math.sin(aa) * s * 0.55, k % 8 ? "=" : "#", p.accent, 0.8);
+        }
+        for (const side of [-1, 1]) {
+          const xx = x + Math.cos(a) * s * side, yy = y + Math.sin(a) * s * 0.55 * side;
+          mask(xx, yy, s * 0.57, s * 0.25, (u, v) => Math.abs(u) < 1 && Math.abs(v) < 1 ? 0.4 + (Math.abs(Math.sin(u * 13) * Math.cos(v * 7)) < 0.25 ? 0.4 : 0) : 0, p.secondary, a);
+          for (let k = 0; k < 18; k++) char(x + (xx - x) * k / 17, y + (yy - y) * k / 17, "+", p.muted, 0.8);
+        }
+        mask(x, y, s * 0.25, s * 0.25, (u, v) => u * u + v * v < 1 ? 0.8 : 0, p.glow);
+        break;
+      }
+      case "rocket-launch": {
+        stars(95);
+        const x = w * 0.66 + Math.sin(t * 0.13) * 20 * scale, y = h * (0.4 + 0.04 * Math.sin(t * 0.16)), s = 80 * scale;
+        mask(x, y, s * 0.4, s, (u, v) => v > -1 && v < 0.8 && Math.abs(u) < Math.min(0.9, (v + 1) * 1.4) ? 0.7 : 0, p.secondary);
+        mask(x, y - s * 0.12, s * 0.16, s * 0.16, (u, v) => u * u + v * v < 1 ? 0.9 : 0, p.glow);
+        for (const side of [-1, 1]) mask(x + side * s * 0.4, y + s * 0.6, s * 0.3, s * 0.45, (u, v) => v > -0.7 && v < 0.8 && Math.abs(u) < (v + 1) * 0.5 ? 0.65 : 0, p.accent);
+        for (let k = 0; k < 22; k++) {
+          const q = k / 21, flame = (1 - q) * s * 0.25;
+          for (let xx = -flame; xx <= flame; xx += stepX) char(x + xx, y + s * 0.8 + q * s * 1.3, Math.sin(t * 4 + k) > 0 ? "%" : ":", q < 0.3 ? p.glow : p.accent, 1 - q * 0.65);
+        }
+        for (let i = 0; i < 5; i++) cloud(x + Math.sin(i * 2) * s * 0.9, h * 0.95 - i * 7 * scale, 55 * scale + i * 9 * scale, p.muted, 0.45);
+        for (let i = 0; i < 40; i++) char(rnd(i + 4) * w, wrap(rnd(i + 7) * h + t * 35, h), ".", p.glow, 0.35);
+        break;
+      }
+      case "alien-orchard": {
+        stars(70);
+        mask(w * 0.78, h * 0.16, 35 * scale, 35 * scale, (u, v) => u * u + v * v < 1 ? 0.7 : 0, p.secondary);
+        mask(w * 0.9, h * 0.23, 20 * scale, 20 * scale, (u, v) => u * u + v * v < 1 ? 0.7 : 0, p.accent);
+        for (let i = 0; i < 9; i++) {
+          const x = (i + 0.3) * w / 9, y = h * 0.88, hh = (90 + rnd(i + 12) * 100) * scale, sway = Math.sin(t * 0.25 + i) * 15 * scale;
+          for (let k = 0; k < hh; k += stepY) char(x + sway * k / hh, y - k, "|", p.muted, 0.85);
+          for (let branch = 0; branch < 3; branch++) {
+            const xx = x + sway + Math.sin(branch * 2 + i) * hh * 0.3, yy = y - hh + branch * 18 * scale;
+            mask(xx, yy, hh * 0.27, hh * 0.17, (u, v) => u * u + v * v < 1 ? 0.4 + 0.35 * Math.sin(t * 0.35 + i) ** 2 : 0, branch % 2 ? p.secondary : p.accent);
+            char(xx, yy, "@", p.glow, 0.8);
+            glow(xx, yy, hh * 0.3, p.accent, 0.12);
+          }
+        }
+        for (let i = 0; i < 35; i++) char(wrap(rnd(i + 3) * w + t * 3, w), h * (0.5 + rnd(i + 17) * 0.4) + Math.sin(t * 0.3 + i) * 15, ".", p.glow, 0.4);
+        break;
+      }
+      case "retro-arcade": {
+        stars(50);
+        const invader = ["  #   #  ", "   # #   ", "  #####  ", " ## # ## ", "#########", "# ##### #", "# #   # #", "   # #   "];
+        for (let fleet = 0; fleet < 2; fleet++) for (let i = 0; i < 5; i++) {
+          const x2 = w * (0.12 + i * 0.18) + Math.sin(t * 0.35) * 30 * scale, y2 = h * (0.18 + fleet * 0.22), cell = stepX * 1.4;
+          for (let row = 0; row < invader.length; row++) for (let col = 0; col < 9; col++) if (invader[row][col] === "#" && !(row === 7 && Math.sin(t * 2) > 0 && col === 3)) char(x2 + (col - 4) * cell, y2 + row * stepY, "#", fleet ? p.secondary : p.accent);
+        }
+        const x = w * (0.5 + 0.3 * Math.sin(t * 0.2)), y = h * 0.86;
+        mask(x, y, 28 * scale, 22 * scale, (u, v) => Math.abs(u) < 0.8 - Math.abs(v) * 0.5 ? 0.8 : 0, p.glow);
+        for (let i = 0; i < 4; i++) {
+          const yy = y - fract(t * 0.6 + i * 0.25) * h * 0.75;
+          char(x, yy, "|", p.glow, 0.8);
+        }
+        break;
+      }
+      case "hologram-city": {
+        for (let tower = 0; tower < 11; tower++) {
+          const x = (tower + 0.2) * w / 11, bw = 45 * scale, bh = (70 + rnd(tower + 8) * 200) * scale, base = h * (0.85 + 0.03 * Math.sin(t * 0.3 + tower));
+          for (let yy = base - bh; yy <= base; yy += stepY) for (let xx = x; xx < x + bw; xx += stepX) {
+            const edge = xx === x || xx > x + bw - stepX || yy < base - bh + stepY || yy > base - stepY, scan = fract((yy - base) / bh + t * 0.15);
+            if (edge || scan < 0.1 || rnd(xx + yy) > 0.83) char(xx, yy, edge ? "+" : scan < 0.1 ? "=" : ":", edge ? p.accent : p.secondary, edge ? 0.75 : 0.35);
+          }
+          if (tower < 10) for (let k = 0; k < 12; k++) {
+            const q = k / 11;
+            char(x + bw + q * w * 0.06, base - bh * 0.4, "-", p.muted, 0.5);
+            if (fract(t * 0.35 + tower * 0.12 + q) < 0.12) char(x + bw + q * w * 0.06, base - bh * 0.4, "*", p.glow);
+          }
+        }
+        for (let i = 0; i < 50; i++) char(rnd(i + 33) * w, wrap(rnd(i + 19) * h - t * 9, h), "0", p.secondary, 0.15);
+        break;
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  // shared/descriptions.en.ts
+  var descriptions = {
+    "claude-ember": "An ASCII star breathing with an ember glow",
+    "cloud-drift": "Layered clouds drifting across the sky",
+    "honu-lagoon": "Sea turtles swimming above a coral reef",
+    "koi-pond": "Fish and ripples among water lilies",
+    "jellyfish": "Glowing jellyfish rising through deep blue water",
+    "paper-boats": "Paper boats rocking on the waves",
+    "fireflies": "Fireflies blinking above the grass",
+    "moonlit": "Night clouds drifting through moonlight",
+    "sakura-rain": "Petals falling from cherry branches",
+    "bamboo-mist": "Mist weaving between bamboo stems",
+    "autumn-creek": "A stream carrying autumn leaves",
+    "snow-cabin": "Snowfall around a mountain cabin with a smoking chimney",
+    "aurora": "Curtains of northern lights bending across the sky",
+    "saturn-rings": "Particles orbiting the rings of Saturn",
+    "meteor-shower": "Meteors streaking between the stars",
+    "nebula": "Cosmic gas clouds changing shape over time",
+    "lunar-horizon": "A distant star rising over a cratered horizon",
+    "solar-flare": "Plasma arches rising from the surface of the sun",
+    "neon-tokyo": "Flickering neon in rainy city streets",
+    "matrix-rain": "Characters streaming down vertical columns",
+    "synthwave-road": "A perspective road flowing beneath the sun",
+    "clockwork-garden": "Brass gears turning among leaves",
+    "crystal-cave": "Light refracting through crystals",
+    "lava-forge": "Lava and sparks flowing between rocks",
+    "whale-song": "Giant whales, shafts of light, and rising bubbles",
+    "manta-ballet": "Manta rays gliding with gently undulating wings",
+    "seahorse-reef": "Curled seahorses among swaying seaweed",
+    "octopus-den": "Eight curling arms and glowing plankton inside a cave",
+    "coral-garden": "A branching coral forest and colorful schools of fish",
+    "submarine-voyage": "A spinning propeller, lit portholes, and a trail of bubbles",
+    "dragon-flight": "A giant dragon flapping above mountain silhouettes",
+    "phoenix-rise": "A phoenix with fiery wings, trailing feathers, and sparks",
+    "butterfly-meadow": "Fluttering butterflies, flowers, and drifting pollen",
+    "floating-islands": "Islands floating in the sky with cascading waterfalls",
+    "sky-lanterns": "Large paper lanterns rising into a starry night",
+    "thunderstorm": "Dark storm clouds, heavy rain, and branching lightning",
+    "mushroom-grove": "Giant glowing mushrooms and drifting spores",
+    "enchanted-library": "Flying books, towering shelves, and orbiting magic letters",
+    "teahouse-rain": "Steam rising from a teacup with rain beyond the window",
+    "desert-caravan": "Camels crossing shifting dunes beneath a crescent moon",
+    "bonsai-zen": "A sculpted bonsai, raked sand, and slowly falling leaves",
+    "midnight-express": "Lit train carriages passing through a starry landscape",
+    "black-hole": "A tilted accretion disk flowing around a black hole",
+    "orbital-station": "A rotating space station, solar panels, and orbital trails",
+    "rocket-launch": "A rising rocket, engine flames, and expanding smoke",
+    "alien-orchard": "Glowing trees swaying beneath two alien moons",
+    "retro-arcade": "An advancing alien fleet, a pixel spaceship, and lasers",
+    "hologram-city": "Floating holographic towers and moving data bridges"
+  };
+
+  // preview-entry.js
+  var language = "tr";
+  var grid = document.querySelector("#grid");
+  var cards = [];
+  var frozen = false;
+  var elapsed = 0;
+  var last = performance.now();
+  var observer = new IntersectionObserver((entries) => {
+    for (const e of entries) e.target.visible = e.isIntersecting;
+  }, { rootMargin: "100px" });
+  for (const theme2 of THEMES) {
+    const card = document.createElement("article"), canvas = document.createElement("canvas"), label = document.createElement("h2"), description = document.createElement("p");
+    card.dataset.search = (theme2.name + " " + theme2.group + " " + theme2.description).toLocaleLowerCase(language);
+    label.textContent = theme2.name;
+    description.textContent = language === "tr" ? theme2.description : descriptions[theme2.id];
+    card.dataset.search = (theme2.name + " " + description.textContent).toLocaleLowerCase(language);
+    card.append(canvas, label, description);
+    grid.append(card);
+    observer.observe(card);
+    cards.push({ card, canvas, theme: theme2 });
+  }
+  document.querySelector("#filter").addEventListener("input", (event) => {
+    const q = event.target.value.toLocaleLowerCase(language);
+    for (const { card } of cards) card.hidden = !card.dataset.search.includes(q);
+  });
+  document.querySelector("#pause").addEventListener("click", (event) => {
+    frozen = !frozen;
+    event.target.textContent = frozen ? language === "tr" ? "Devam et" : "Resume" : language === "tr" ? "Duraklat" : "Pause";
+  });
+  setInterval(() => {
+    const now = performance.now();
+    if (!frozen && !document.hidden) elapsed += now - last;
+    last = now;
+    for (const { card, canvas, theme: theme2 } of cards) {
+      if (card.hidden || !card.visible) continue;
+      const width = canvas.clientWidth, height = canvas.clientHeight, dpr = Math.min(devicePixelRatio, 2);
+      if (canvas.width !== Math.round(width * dpr) || canvas.height !== Math.round(height * dpr)) {
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+      }
+      const ctx = canvas.getContext("2d");
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      paintWorld(ctx, width, height, theme2.id, elapsed / 1e3, 0.65);
+    }
+  }, 125);
+})();
+</script></html>
